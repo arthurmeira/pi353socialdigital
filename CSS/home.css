@@ -1,0 +1,161 @@
+/******************GLOBAL******************/
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Arial";
+}
+
+:root{
+    --color-background: #dadada; 
+}
+:root{
+    --color-here-yellow: #FBE200;
+}
+:root{
+    --color-clean-blue: #3261bc;
+}
+
+/******************HEADER******************/
+header #top{
+    background-color: var(--color-clean-blue);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 150px 10px 150px;
+}
+
+header #top a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.5s;
+}
+
+header #top a:hover{
+    color: var(--color-here-yellow);
+}
+
+header #top a.home-scr{
+    color: var(--color-here-yellow);
+    margin: 20px;
+}
+
+
+/******************MAIN******************/
+main #mid .content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 270px 80px 270px;
+}
+
+main #mid .content img{
+    width: 300px;
+}
+
+main #mid .article p{
+    font-size: 20px;
+    width: 900px;
+}
+
+
+main #mid .article2 img{
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+
+main #mid .container .card-phrase{
+    background-color: var(--color-clean-blue);
+    color: white;
+    font-size: 20px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+main #mid .container .article3{
+    font-size: 20px;
+    margin: auto;
+    width: 1200px;
+    padding: 100px 0px 100px 0px;
+}
+
+main #mid .container .social-midia{
+    font-size: 20px;
+    margin: auto;
+    width: 1000px;
+    text-align: center;
+}
+
+main #mid .container .social-midia img{
+    width: 70px;
+    padding: 50px 10px 50px 10px;
+}
+
+footer #bot .bottom{
+    text-align: center;
+
+    background: var(--color-clean-blue);
+    color: white;
+    font-weight: bold;
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+}
+
+footer #bot .bottom img{
+    width: 120px;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 480px) {
+    header #top{
+        background-color: aquamarine;
+        font-size: 70%;
+        padding: 10px;
+    }
+
+    header #top a.home-scr{
+        color: var(--color-here-yellow);
+        margin: 5px;
+    }
+}
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 481px) and (max-width: 767px) {
+    header #top{
+        background-color: rebeccapurple;
+        font-size: 75%;
+        padding: 10px 40px 10px 40px;
+    }
+}
+/* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 768px) and (max-width: 1024px){
+    header #top{
+        background-color: green;
+        font-size: 80%;
+        padding: 10px 60px 10px 60px;
+    }
+}
+/* Media Query for Laptops and Desktops */
+@media (min-width: 1025px) and (max-width: 1280px){
+    header #top{
+        background-color: burlywood;
+        font-size: 85%;
+        padding: 10px 80px 10px 80px;
+    }
+}
+/* Media Query for Large screens */
+@media (min-width: 1281px) { 
+    header #top{
+        font-size: 100%;
+    }
+}
