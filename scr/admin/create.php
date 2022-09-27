@@ -1,37 +1,24 @@
 <?php
     include_once('connect.php');
+    include_once('var.php');
 
-    $name_user = $_POST['nome_user'];
-    $cpf_user = $_POST['cpf_user'];
-    $rg_user = $_POST['rg_user'];
-    $email_user = $_POST['email_user'];
-    $celular_user = $_POST['cel_user'];
-    $dtNasc_user = $_POST['dtNasc_user'];
-    $dtCad_user = $_POST['dtCad_user'];
-    //$tipo_user = $_POST['tipo_user'];
-    //$fkEndereco_user = $_POST['email_user'];
-
-
-$sql = "INSERT INTO `usuarios`(
-            `id_usuario`, 
-            `nome_usuario`, 
-            `cpf_usuario`, 
-            `rg_usuario`, 
-            `email_usuario`, 
-            `celular_usuario`, 
-            `dtNasc_usuario`, 
-            `dtCad_usuario`, 
-            `tipo_usuario`, 
-            `fk_endereco`
+$sql = "INSERT INTO usuarios(
+            nome_usuario, 
+            cpf_usuario, 
+            rg_usuario, 
+            email_usuario, 
+            celular_usuario, 
+            dtNasc_usuario, 
+            dtCad_usuario
             ) 
         VALUES(    
-            $name_user,
-            $cpf_user,
-            $rg_user,
-            $email_user,
-            $celular_user,
-            $dtNasc_user,
-            $dtCad_user
+            '$name_user',
+            '$cpf_user',
+            '$rg_user',
+            '$email_user',
+            '$celular_user',
+            '$dtNasc_user',
+            '$dtCad_user'
             )";
 
     if ($conn->query($sql) === TRUE) {
@@ -44,3 +31,18 @@ $sql = "INSERT INTO `usuarios`(
 
     mysqli_close($conn);
 ?>  
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Digital - ADMIN</title>
+</head>
+<body>
+    
+        <a href="/pi353socialdigital/scr/admin/read.php">Ver registros</a>
+
+</body>
+</html>

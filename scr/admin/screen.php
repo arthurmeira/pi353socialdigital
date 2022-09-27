@@ -50,9 +50,9 @@
 
                     <label for="comum">Comum</label>
                     <input type="radio" name="comum_user" id="userComum" value="C"><br><br>
+-->
 
                     <input type="submit" name="sbmt" value="Cadastrar" link="create.php">
--->
 
                 </form>
             </fieldset>
