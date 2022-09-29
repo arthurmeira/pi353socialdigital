@@ -3,6 +3,7 @@
     //Chamando todos os arquivos necessários 
     include_once("connect.php");
     $results = mysqli_query($conn, "SELECT * FROM usuarios");
+    $updtResults = mysqli_query($conn, "SELECT * FROM usuarios");
 
 ?>
 
@@ -61,11 +62,9 @@
                             <td><?php echo $row['celular_usuario']; ?></td>
                             <td><?php echo $row['dtNasc_usuario']; ?></td>
                             <td><?php echo $row['dtCad_usuario']; ?></td>
-        
-                            <div class="btn" > 
-                                <td><a href="/pi353socialdigital/scr/admin/edit.php?id=$res[id]">Edit</a> 
-                                <td><a href="/pi353socialdigital/scr/admin/delete.php?id=$res[id]">Delete</a></td>                      
-                            </div><!--btn-->
+
+                            <td><a href="screenEdit.php?edit=<?php echo $row['id_usuario']; ?>" class="edit_btn" >Edit</a></td>
+                            <td><a href="delete.php">Delete</a></td>                  
                         </tr>
                     <?php } ?>
                 </table>

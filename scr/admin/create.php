@@ -30,6 +30,7 @@ $sql = "INSERT INTO usuarios(
     }
 
     mysqli_close($conn);
+
 ?>  
 
 <!DOCTYPE html>
@@ -41,8 +42,6 @@ $sql = "INSERT INTO usuarios(
     <title>Social Digital - ADMIN</title>
 </head>
 <body>
-    
-        <a href="/pi353socialdigital/scr/admin/read.php">Ver registros</a>
-
+    <a href="/pi353socialdigital/scr/admin/read.php">Ver registros</a>
 </body>
 </html>

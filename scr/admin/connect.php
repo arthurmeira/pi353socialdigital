@@ -10,5 +10,4 @@
     if (!$conn) {
         die('Not connected: ' . mysqli_connect_error());
     }
-
 ?>
