@@ -34,18 +34,20 @@
                 <div class="top">
                     <h2>Usuários <a href="/pi353socialdigital/scr/admin/screen.php">New</a></h2>
 
-                    <fieldset>
-                        <select name="tipo_busca" id="tipo_busca">
-                            <option value="1">ID</option>
-                            <option value="2">Nome</option>
-                            <option value="3">Nascimento</option>
-                            <option value="4">Cadastro</option>
-                        </select>
+                    <form method="post" action="search.php">
+                        <fieldset>
+                            <select name="tipo_busca" id="tipo_busca">
+                                <option name="1" value="id">ID</option>
+                                <option name="2" value="nome">Nome</option>
+                                <option name="3" value="nascimento">Nascimento</option>
+                                <option name="4" value="cadastro">Cadastro</option>
+                            </select>
 
-                    <input type="search" name="buscar" id="buscar">
-                    <input type="submit" name="sbmt" id="sbmt" value="Search">
-                
-                    </fieldset>
+                        <input type="search" name="buscar" id="buscar">
+                        <input type="submit" name="sbmt" id="sbmt" value="Search">
+                    
+                        </fieldset>
+                    </form>
                 </div>
                 <hr>
                  
@@ -87,9 +89,6 @@
 
 </section>
 <form>
-
-
-
 
 </body>
 </html>
