@@ -32,8 +32,20 @@
         <div class="card">
             <fieldset>
                 <div class="top">
-                    <h2>Usuários</h3>
-                    <a href="/pi353socialdigital/scr/admin/screen.php">New</a>
+                    <h2>Usuários <a href="/pi353socialdigital/scr/admin/screen.php">New</a></h2>
+
+                    <fieldset>
+                        <select name="tipo_busca" id="tipo_busca">
+                            <option value="1">ID</option>
+                            <option value="2">Nome</option>
+                            <option value="3">Nascimento</option>
+                            <option value="4">Cadastro</option>
+                        </select>
+
+                    <input type="search" name="buscar" id="buscar">
+                    <input type="submit" name="sbmt" id="sbmt" value="Search">
+                
+                    </fieldset>
                 </div>
                 <hr>
                  
@@ -63,8 +75,8 @@
                             <td><?php echo $row['dtNasc_usuario']; ?></td>
                             <td><?php echo $row['dtCad_usuario']; ?></td>
 
-                            <td><a href="screenEdit.php?edit=<?php echo $row['id_usuario']; ?>" class="edit_btn" >Edit</a></td>
-                            <td><a href="delete.php">Delete</a></td>                  
+                            <td><a href="screenEdit.php?id=<?=$row['id_usuario']; ?>" class="edit_btn" >Edit</a></td>
+                            <td><a href="delete.php?id=<?=$row['id_usuario']; ?>" class="del_btn" >Delete</a></td>           
                         </tr>
                     <?php } ?>
                 </table>
