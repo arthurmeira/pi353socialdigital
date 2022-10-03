@@ -1,28 +1,3 @@
-<?php
-include_once('connect.php');
-
-$buscar = $_POST['buscar'];
-$tipo_busca = $_POST['tipo_busca'];
-
-switch ($tipo_busca) {
-    case 'id':
-        $sql_busca = mysqli_query($conn, "SELECT * FROM usuarios WHERE id_usuario = $buscar");
-        break;
-    case 'nome':
-        $sql_busca = mysqli_query($conn, "SELECT * FROM usuarios WHERE nome_usuario = $buscar");
-        break;
-    case 'cpf':
-        $sql_busca = mysqli_query($conn, "SELECT * FROM usuarios WHERE cpf_usuario = $buscar");
-        break;
-    case 'cadastro':
-        $sql_busca = mysqli_query($conn, "SELECT * FROM usuarios WHERE dtCad_usuario = $buscar");
-        break;
-    default:
-        echo "Opção inválida.";
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,6 +11,19 @@ switch ($tipo_busca) {
 <body>
     <h1>Social Digital - Busca</h1>
     <h3><a href="read.php" class="back_btn">Voltar</a></h3>
+
+    <?php
+    include_once('connect.php');
+
+    $buscar = $_POST['buscar'];
+    $tipo_busca = $_POST['tipo_busca'];
+    $submit = $_POST['sbmt'];
+
+    if (isset($submit)) {
+        $sql_busca = mysqli_query($conn, "SELECT * FROM usuarios WHERE (id_usuario = $buscar) or (nome_usuario = '$buscar')  or (cpf_usuario = $buscar) or (dtCad_usuario = $buscar)");
+    }
+    
+    ?>
 
     <fieldset>
         <table>
@@ -53,7 +41,7 @@ switch ($tipo_busca) {
                 </tr>
             </thead>
 
-            <?php   
+            <?php
             while ($row = mysqli_fetch_array($sql_busca)) { ?>
                 <tr>
                     <td><?php echo $row['id_usuario']; ?></td>

@@ -34,7 +34,7 @@
                     <form style="color: green" method="post" action="search.php">
                         <fieldset>
                             <select name="tipo_busca" id="tipo_busca">
-                                <option name="1" value="id">ID</option>
+                                <option name="1" value="geral">Geral</option>
                                 <option name="2" value="nome">Nome</option>
                                 <option name="3" value="cpf">CPF</option>
                                 <option name="4" value="cadastro">Cadastro</option>
