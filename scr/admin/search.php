@@ -1,6 +1,5 @@
 <?php
 include_once('connect.php');
-include_once('read.php');
 
 $buscar = $_POST['buscar'];
 $tipo_busca = $_POST['tipo_busca'];
@@ -8,28 +7,21 @@ $tipo_busca = $_POST['tipo_busca'];
 switch ($tipo_busca) {
     case 'id':
         $sql_busca = mysqli_query($conn, "SELECT * FROM usuarios WHERE id_usuario = $buscar");
-        //func_buscar($sql_busca);
         break;
     case 'nome':
         $sql_busca = mysqli_query($conn, "SELECT * FROM usuarios WHERE nome_usuario = $buscar");
-        //func_buscar($sql_busca);
         break;
-    case 'nascimento':
-        $sql_busca = mysqli_query($conn, "SELECT * FROM usuarios WHERE dtNasc_usuario = $buscar");
-        //func_buscar($sql_busca);
+    case 'cpf':
+        $sql_busca = mysqli_query($conn, "SELECT * FROM usuarios WHERE cpf_usuario = $buscar");
         break;
     case 'cadastro':
         $sql_busca = mysqli_query($conn, "SELECT * FROM usuarios WHERE dtCad_usuario = $buscar");
-        //func_buscar($sql_busca);
         break;
     default:
         echo "Opção inválida.";
 }
-mysqli_close($conn);
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,29 +34,50 @@ mysqli_close($conn);
 </head>
 
 <body>
-    <?php 
-        echo "Busca por $tipo_busca. <br>";
-
+    <h1>Social Digital - Busca</h1>
+    <?php
         if ($buscar == '') {
-            echo "É necessário digitar algo para fazer uma busca. <br>";
+            echo "É necessário digitar um id para fazer uma busca. <br>";
         }
+    ?>
+    <h3><a href="read.php" class="back_btn">Voltar</a></h3>
 
-        while ($row = mysqli_fetch_array($sql_busca)) { ?>
-        <tr>
-            <td><?php echo $row['id_usuario']; ?></td>
-            <td><?php echo $row['nome_usuario']; ?></td>
-            <td><?php echo $row['cpf_usuario']; ?></td>
-            <td><?php echo $row['rg_usuario']; ?></td>
-            <td><?php echo $row['email_usuario']; ?></td>
-            <td><?php echo $row['celular_usuario']; ?></td>
-            <td><?php echo $row['dtNasc_usuario']; ?></td>
-            <td><?php echo $row['dtCad_usuario']; ?></td>
+    <fieldset>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>RG</th>
+                    <th>E-mail</th>
+                    <th>Celular</th>
+                    <th>Nascimento</th>
+                    <th>Cadastro</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
 
-            <td><a href="screenEdit.php?id=<?= $row['id_usuario']; ?>" class="edit_btn">Edit</a></td>
-            <td><a href="delete.php?id=<?= $row['id_usuario']; ?>" class="del_btn">Delete</a></td>
-        </tr>
-    <?php } ?>
+            <?php
+            while ($row = mysqli_fetch_array($sql_busca)) { ?>
+                <tr>
+                    <td><?php echo $row['id_usuario']; ?></td>
+                    <td><?php echo $row['nome_usuario']; ?></td>
+                    <td><?php echo $row['cpf_usuario']; ?></td>
+                    <td><?php echo $row['rg_usuario']; ?></td>
+                    <td><?php echo $row['email_usuario']; ?></td>
+                    <td><?php echo $row['celular_usuario']; ?></td>
+                    <td><?php echo $row['dtNasc_usuario']; ?></td>
+                    <td><?php echo $row['dtCad_usuario']; ?></td>
+
+                    <td><a href="screenEdit.php?id=<?= $row['id_usuario']; ?>" class="edit_btn">Edit</a></td>
+                    <td><a href="delete.php?id=<?= $row['id_usuario']; ?>" class="del_btn">Delete</a></td>
+                </tr>
+            <?php } ?>
+        </table>
+    </fieldset>
+    <br>
 
 </body>
 
-</html> 
+</html>

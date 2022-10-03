@@ -1,10 +1,7 @@
 <?php
-
     //Chamando todos os arquivos necessários 
     include_once("connect.php");
     $results = mysqli_query($conn, "SELECT * FROM usuarios");
-    $updtResults = mysqli_query($conn, "SELECT * FROM usuarios");
-
 ?>
 
 <!DOCTYPE html>
@@ -34,18 +31,18 @@
                 <div class="top">
                     <h2>Usuários <a href="/pi353socialdigital/scr/admin/screen.php">New</a></h2>
 
-                    <form method="post" action="search.php">
+                    <form style="color: green" method="post" action="search.php">
                         <fieldset>
                             <select name="tipo_busca" id="tipo_busca">
                                 <option name="1" value="id">ID</option>
                                 <option name="2" value="nome">Nome</option>
-                                <option name="3" value="nascimento">Nascimento</option>
+                                <option name="3" value="cpf">CPF</option>
                                 <option name="4" value="cadastro">Cadastro</option>
                             </select>
 
                         <input type="search" name="buscar" id="buscar">
                         <input type="submit" name="sbmt" id="sbmt" value="Search">
-                    
+                        
                         </fieldset>
                     </form>
                 </div>
@@ -66,7 +63,9 @@
                         </tr>
                     </thead>
 
-                    <?php while ($row = mysqli_fetch_array($results)) { ?>
+
+                    <?php
+                    while ($row = mysqli_fetch_array($results)) { ?>
                         <tr>
                             <td><?php echo $row['id_usuario']; ?></td>
                             <td><?php echo $row['nome_usuario']; ?></td>
