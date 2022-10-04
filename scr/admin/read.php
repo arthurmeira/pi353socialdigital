@@ -40,7 +40,7 @@
                                 <option name="4" value="cadastro">Cadastro</option>
                             </select>
 
-                        <input type="search" name="buscar" id="buscar">
+                        <input type="search" name="buscar" id="buscar" required>
                         <input type="submit" name="sbmt" id="sbmt" value="Search">
                         
                         </fieldset>

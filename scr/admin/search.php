@@ -35,11 +35,6 @@ switch ($tipo_busca) {
 
 <body>
     <h1>Social Digital - Busca</h1>
-    <?php
-        if ($buscar == '') {
-            echo "É necessário digitar um id para fazer uma busca. <br>";
-        }
-    ?>
     <h3><a href="read.php" class="back_btn">Voltar</a></h3>
 
     <fieldset>
@@ -58,7 +53,7 @@ switch ($tipo_busca) {
                 </tr>
             </thead>
 
-            <?php
+            <?php   
             while ($row = mysqli_fetch_array($sql_busca)) { ?>
                 <tr>
                     <td><?php echo $row['id_usuario']; ?></td>
