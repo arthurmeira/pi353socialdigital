@@ -101,20 +101,33 @@
         $nota_e = $_POST['enota'];
         $submit = $_POST['sbmt'];
 
-        if (($nota_a == 'Nota') or ($nota_b == 'Nota') or ($nota_c == 'Nota') or ($nota_b == 'Nota') or ($nota_e == 'Nota')){
+        $id_user = $_POST['id_user'];
+        $name_user = $_POST['nome_user'];
+
+        if (($nota_a == 'Nota') or ($nota_b == 'Nota') or ($nota_c == 'Nota') or ($nota_b == 'Nota') or ($nota_e == 'Nota')) {
             echo "Selecione uma nota para cada pergunta.";
             exit;
         }
 
         $media = ($nota_a + $nota_b + $nota_c + $nota_d + $nota_e) / 5;
-        echo "Média avaliação: $media";
+
+        $sql = "INSERT INTO avaliacao(media_user) VALUES ($media)";
+
+        echo "<br><br>";    
+
+        if ($conn->query($sql) === TRUE) {
+            echo "<br><br> New record created successfully <br>";
+            echo $sql;
+            
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
     
-
-        
-
-        $sql = "INSERT INTO notas";
-
+        mysqli_close($conn);
+    
         ?>
+
+
 
     </main>
 </body>
