@@ -1,7 +1,0 @@
-    $novoNome = $_POST['nome_novo'];
-    $novoCpf = $_POST['cpf_novo'];
-    $novoRg = $_POST['rg_novo'];
-    $novoEmail = $_POST['email_novo'];
-    $novoCel = $_POST['cel_novo'];
-    $novoDtNasc = $_POST['dtNasc_novo'];
-    $novoDtCad = $_POST['dtCad_novo'];
