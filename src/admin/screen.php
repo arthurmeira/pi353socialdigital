@@ -73,7 +73,7 @@
                     <input type="date" name="dtNasc_user" id="userDtNasc" required><br><br>
 
                     <label for="rg_user">Data Cadastro</label><br>
-                    <input type="date" name="dtCad_user" id="userDtCad" required><br><br>
+                    <input type="date" name="dtCad_user" id="userDtCad" value="<?php echo date('Y-m-d'); ?>" required><br><br>
 
 <!--
                     <label for="cpf_user">Sexo:</label><br><br>

@@ -9,6 +9,7 @@
 
 <?php
     include_once('connect.php');
+    //include_once('var.php');
 ?>
 
 <body>
@@ -17,7 +18,7 @@
         <div id="mid-edit">
             <fieldset>
                 <form method="POST" action="edit.php">
-                    <input type="hidden" id="id_user" name="id_user" value="<?=$_GET['id'];?>" />
+                    <input type="hidden" id="id_user" name="id_user" value="<?=$_GET['id'];?>"/>
                     <label for="name_user">Nome</label><br>
                     <input type="text" name="nome_user" id="userName" value="<?php echo 'Nome' ?>" required><br><br>
 
@@ -37,7 +38,7 @@
                     <input type="date" name="dtNasc_user" id="userDtNasc" value="<?php echo 'Nascimento' ?>" required><br><br>
 
                     <label for="rg_user">Data Cadastro</label><br>
-                    <input type="date" name="dtCad_user" id="userDtCad"  value="<?php echo 'Cadastro' ?>" required><br><br>
+                    <input type="date" name="dtCad_user" id="userDtCad"  value="<?php echo date('Y-m-d'); ?>" required><br><br>
 
 <!--
                     <label for="cpf_user">Sexo:</label><br><br>

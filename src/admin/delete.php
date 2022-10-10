@@ -1,6 +1,11 @@
 <?php
     include_once('connect.php');   
     $id = $_GET["id"]; 
+    $del = $_POST['del'];
+
+    if(isset($del)){
+        echo "Tem certeza que deseja apagar este usuário?";
+    }
 
     $sql = "DELETE FROM usuarios WHERE id_usuario = $id";
 

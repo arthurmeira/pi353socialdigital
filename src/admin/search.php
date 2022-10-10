@@ -16,7 +16,6 @@
     include_once('connect.php');
 
     $buscar = $_POST['buscar'];
-    $tipo_busca = $_POST['tipo_busca'];
     $submit = $_POST['sbmt'];
 
     if (isset($submit)) {
