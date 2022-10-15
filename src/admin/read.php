@@ -11,9 +11,8 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Social Digital - ADMIN</title>
+    <title>Social Digital</title>
 </head>
 
 <body>
@@ -23,14 +22,38 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
 
         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Cadastros
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/screen.php">Novo</a>
+                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/read.php">Tabela de usuários</a>
+                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/read.php">Relatório</a>
+                    </div>
 
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">ADMIN</a>
-                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dashboard
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Geral</a>
+                        <a class="dropdown-item" href="#">Visitas</a>
+                        <a class="dropdown-item" href="#">Gráficos</a>
+                    </div>
 
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Contato
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Mensagens</a>
+                        <a class="dropdown-item" href="#">Feedbacks</a>
+                        <a class="dropdown-item" href="#">Gráficos</a>
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>
@@ -41,18 +64,15 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
         <div class="card">
 
             <div class="d-flex justify-content-between d-flex align-items-center" style="padding: 10px;">
-                <h2>Tabela de usuários</h2>
-            <div>
-            <form action="search.php" method="post" class="d-flex justify-content-around d-flex align-items-center">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="buscar" id="buscar" required>
-                    <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="sbmt" id="sbmt" value="Buscar">
-                </form>
-            </div>
-                
+                <div>
+                    <form action="search.php" method="post" class="d-flex justify-content-around d-flex align-items-center">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="buscar" id="buscar" required>
+                        <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="sbmt" id="sbmt" value="Buscar">
+                    </form>
+                </div>
                 <form method="post" action="search.php">
-                    <a style="font-size: 22px; font-weight:500;" href="/pi353socialdigital/src/admin/screen.php">Novo</a>
+                    <a class="btn btn-success " style="font-size: 16px; font-weight:500;" href="/pi353socialdigital/src/admin/screen.php">NOVO</a>
                 </form>
-                
             </div>
 
 
@@ -83,7 +103,8 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                             <td><?php echo $row['dtNasc_usuario']; ?></td>
                             <td><?php echo $row['dtCad_usuario']; ?></td>
 
-                            <td><a name="edit" href="screenEdit.php?id=<?= $row['id_usuario']; ?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>
+                            <td>
+                                <a name="edit" href="screenEdit.php?id=<?= $row['id_usuario']; ?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>
                                 <a name="del" href="delete.php?id=<?= $row['id_usuario']; ?>" class="del_btn"><img src="/pi353socialdigital/IMAGES/lixo.png" alt="trash"></a>
                             </td>
                         </tr>
