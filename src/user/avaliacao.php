@@ -4,128 +4,139 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Digital - Avaliação</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Social Digital</title>
 </head>
 
 <body>
-    <main>
-        <h1>Social Digital - Avaliação</h1>
-        <h4>Sistema de avaliação: 1 - Muito ruim; 2 - Ruim; 3 - Ok; 4 - Bom; 5 - Muito bom.</h4>
 
-        <div class="Perguntas" style="border:2px solid royalblue; margin: 10px; padding: 10px;">
-            <form action="/pi353socialdigital/src/user/avaliacao.php" method="POST">
-                <div class="avaliacao-user">
-                    <fieldset>
-                        <p>Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
-                            <select name="anota" id="anota" style="float: right;">
-                                <option value="Nota">Nota</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </p>
-                    </fieldset>
-                </div>
-                <div class="avaliacao-user">
-                    <fieldset>
-                        <p>Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
-                            <select name="bnota" id="bnota" style="float: right;">
-                                <option value="Nota">Nota</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </p>
-                    </fieldset>
-                </div>
-                <div class="avaliacao-user">
-                    <fieldset>
-                        <p>Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
-                            <select name="cnota" id="cnota" style="float: right;">
-                                <option value="Nota">Nota</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </p>
-                    </fieldset>
-                </div>
-                <div class="avaliacao-user">
-                    <fieldset>
-                        <p>Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
-                            <select name="dnota" id="dnota" style="float: right;">
-                                <option value="Nota">Nota</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </p>
-                    </fieldset>
-                </div>
-                <div class="avaliacao-user">
-                    <fieldset>
-                        <p>Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
-                            <select name="enota" id="enota" style="float: right;">
-                                <option value="Nota">Nota</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </p>
-                    </fieldset><br>
-                    <input style="color: green;" type="submit" name="sbmt" id="sbmt" value="Search">
-                </div>
-            </form>
-            </fieldset>
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary ">
+        <a class="navbar-brand" href="#">Social Digital</a>
+
+        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link " href="/pi353socialdigital/src/user/home.php">Home</a>
+                </li>
+                <li>
+                    <a class="nav-link active" href="/pi353socialdigital/src/user/avaliacao.php">Avaliação</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pi353socialdigital/src/user/contato.php">Contato</a>
+                </li>
+                <li>
+                    <a class="nav-link " href="/pi353socialdigital/src/user/perfil.php">Perfil</a>
+                </li>
+            </ul>
         </div>
-        <!--perguntas-->
+    </nav>
 
-        <?php
-        include_once("/xampp/htdocs/pi353socialdigital/src/admin/connect.php");
+    <br><br>
 
-        $nota_a = $_POST['anota'];
-        $nota_b = $_POST['bnota'];
-        $nota_c = $_POST['cnota'];
-        $nota_d = $_POST['dnota'];
-        $nota_e = $_POST['enota'];
-        $submit = $_POST['sbmt'];
+    <div class="container">
+        <div class="card">
+            <form action="/pi353socialdigital/src/user/avaliacao.php" method="POST">
+                <table class="table table-striped">
+                    <thead class="thead-Primary">
+                        <ul class="list-group">
+                            <h4 class="list-group-item active">Avaliação</h4>
+                            <li class="list-group-item">Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
+                                <select class="form-control-sm btn-outline-primary" name="anota" id="anota" style="float: right;">
+                                    <option value="Nota">Nota</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </li>
+                            <li class="list-group-item">Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
+                                <select class="form-control-sm btn-outline-primary" name="bnota" id="bnota" style="float: right;">
+                                    <option value="Nota">Nota</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </li>
+                            <li class="list-group-item">Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
+                                <select class="form-control-sm btn-outline-primary" name="cnota" id="cnota" style="float: right;">
+                                    <option value="Nota">Nota</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </li>
+                            <li class="list-group-item">Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
+                                <select class="form-control-sm btn-outline-primary" name="dnota" id="dnota" style="float: right;">
+                                    <option value="Nota">Nota</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </li>
+                            <li class="list-group-item">Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
+                                <select class="form-control-sm btn-outline-primary" name="enota" id="enota" style="float: right;">
+                                    <option value="Nota">Nota</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </li>
+                            <li class="list-group-item">
+                                <input class="btn btn-primary d-flex justify-content-center align-items-center form-group col-md-4" style="margin: auto;" type="submit" name="sbmt" id="sbmt" value="Enviar">
+                            </li>
+                        </ul>
+                    </thead>
+                </table>
+            </form>
+        </div>
+    </div>
 
-        $id_user = $_POST['id_user'];
-        $name_user = $_POST['nome_user'];
 
-        if (($nota_a == 'Nota') or ($nota_b == 'Nota') or ($nota_c == 'Nota') or ($nota_b == 'Nota') or ($nota_e == 'Nota')) {
-            echo "Selecione uma nota para cada pergunta.";
-            exit;
-        }
+    <?php
+    include_once("/xampp/htdocs/pi353socialdigital/src/admin/connect.php");
 
-        $media = ($nota_a + $nota_b + $nota_c + $nota_d + $nota_e) / 5;
+    error_reporting(0);
 
-        $sql = "INSERT INTO avaliacao(media_user) VALUES ($media)";
+    $nota_a = $_POST['anota'];
+    $nota_b = $_POST['bnota'];
+    $nota_c = $_POST['cnota'];
+    $nota_d = $_POST['dnota'];
+    $nota_e = $_POST['enota'];
+    $submit = $_POST['sbmt'];
 
-        echo "<br><br>";    
+    //$id_user = $_POST['id_user'];
+    //$name_user = $_POST['nome_user'];
 
-        if ($conn->query($sql) === TRUE) {
-            echo "<br><br> New record created successfully <br>";
-            echo $sql;
-            
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-    
-        mysqli_close($conn);
-    
-        ?>
+    if (($nota_a == 'Nota') or ($nota_b == 'Nota') or ($nota_c == 'Nota') or ($nota_b == 'Nota') or ($nota_e == 'Nota')) {
+        echo "Selecione uma nota para cada pergunta.";
+        exit;
+    }
+
+    $media = ($nota_a + $nota_b + $nota_c + $nota_d + $nota_e) / 5;
+
+    $sql = "INSERT INTO avaliacao(media_user) VALUES ($media)";
+
+    echo "<br><br>";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Avaliação realizada com sucesso. Média gerada $sql.<br>";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    mysqli_close($conn);
+
+    ?>
 
 
 

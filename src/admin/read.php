@@ -62,11 +62,10 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
 
     <div class="container">
         <div class="card">
-
             <div class="d-flex justify-content-between d-flex align-items-center" style="padding: 10px;">
                 <div>
                     <form action="search.php" method="post" class="d-flex justify-content-around d-flex align-items-center">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="buscar" id="buscar" required>
+                        <input class= "form-control mr-sm-2" type="search" placeholder="Pesquisar" name="buscar" id="buscar" required>
                         <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="sbmt" id="sbmt" value="Buscar">
                     </form>
                 </div>
