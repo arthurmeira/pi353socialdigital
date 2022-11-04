@@ -32,29 +32,28 @@
         </div>
     </nav>
 
-    <br><br>
+
+
+    <div>
+        <img src="/pi353socialdigital/IMAGES/kids-image.png" class="img-fluid" alt="Responsive image">
+    </div>
+
+
+    <div class="card navbar navbar-expand-lg navbar navbar-dark bg-primary" style="color: white;">
+        <p>Usando cor para adicionar significado só fornece uma indicação visual, a qual não será transmitida para usuários de tecnologias assistivas (como leitores de telas). Se assegure que a informação denotada pela cor é tanto destacada do conteúdo (ex: o texto visível) ou está incluída em meios alternativos, como textos extras escondidos com a classe .sr-class.</p>
+    </div>
+
+    <br>
 
     <div class="container" style="text-align: justify;">
-        <div >
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae diam pretium, tempor sapien vitae, dignissim lorem. Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.</p>
-            <p>Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae diam pretium, tempor sapien vitae, dignissim lorem. Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.</p>
-        </div>
 
         <div>
-            <img src="/pi353socialdigital/IMAGES/kids-image.png" class="img-fluid" alt="Responsive image">
-        </div>
-
-        <div class="card navbar navbar-expand-lg navbar navbar-dark bg-primary" style="color: white;">
-            <p>Usando cor para adicionar significado só fornece uma indicação visual, a qual não será transmitida para usuários de tecnologias assistivas (como leitores de telas). Se assegure que a informação denotada pela cor é tanto destacada do conteúdo (ex: o texto visível) ou está incluída em meios alternativos, como textos extras escondidos com a classe .sr-class.</p>
-        </div>
-
-        <div >
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae diam pretium, tempor sapien vitae, dignissim lorem. Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.</p>
             <p>Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae diam pretium, tempor sapien vitae, dignissim lorem. Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae diam pretium, tempor sapien vitae, dignissim lorem. Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.</p>
             <p>Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae diam pretium, tempor sapien vitae, dignissim lorem. Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.</p>
         </div>
-    </div>
+
 
 </body>
 

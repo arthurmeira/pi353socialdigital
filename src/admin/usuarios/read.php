@@ -1,6 +1,6 @@
 <?php
 //Chamando todos os arquivos necessários 
-include_once("connect.php");
+include_once("../connect.php");
 $results = mysqli_query($conn, "SELECT * FROM usuarios");
 ?>
 
@@ -29,7 +29,7 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/screen.php">Novo usuário</a>
                         <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Tabela de usuários</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Relatório</a>
+                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Relatório de usuário</a>
                     </div>
 
                 </li>
@@ -40,7 +40,7 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vScreen.php">Nova visita</a>
                         <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Tabela de visitas</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Relatório</a>
+                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Relatório de visita</a>
                     </div>
 
                 </li>
@@ -50,8 +50,6 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Mensagens</a>
-                        <a class="dropdown-item" href="#">Feedbacks</a>
-                        <a class="dropdown-item" href="#">Gráficos</a>
                     </div>
                 </li>
             </ul>
@@ -105,6 +103,7 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
 
                             <td>
                                 <a name="edit" href="screenEdit.php?id=<?= $row['id_usuario']; ?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>
+                                <a name="del" href="view.php?id=<?= $row['id_usuario']; ?>"  class="view_btn"><img src="/pi353socialdigital/IMAGES/vision.png" alt="view"></a>
                                 <a name="del" href="delete.php?id=<?= $row['id_usuario']; ?>"  class="del_btn"><img src="/pi353socialdigital/IMAGES/lixo.png" alt="trash"></a>
                             </td>
                         </tr>

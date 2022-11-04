@@ -1,7 +1,7 @@
 <?php
 //Chamando todos os arquivos necessários 
-include_once("/xampp/htdocs/pi353socialdigital/src/admin/connect.php");
-$results = mysqli_query($conn, "SELECT * FROM usuarios");
+include_once("../connect.php");
+$results = mysqli_query($conn, "SELECT * FROM visitas");
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
         <a class="navbar-brand" href="#">Social Digital</a>
 
         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
@@ -27,9 +27,9 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                         Usuários
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/screen.php">Novo usuário</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/read.php">Tabela de usuários</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/read.php">Relatório</a>
+                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/screen.php">Novo usuário</a>
+                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Tabela de usuários</a>
+                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Relatório de usuário</a>
                     </div>
 
                 </li>
@@ -38,9 +38,9 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                         Visitas
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/screen.php">Nova visita</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/read.php">Tabela de visitas</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/read.php">Relatório</a>
+                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vScreen.php">Nova visita</a>
+                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Tabela de visitas</a>
+                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Relatório de visita</a>
                     </div>
 
                 </li>
@@ -50,8 +50,6 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Mensagens</a>
-                        <a class="dropdown-item" href="#">Feedbacks</a>
-                        <a class="dropdown-item" href="#">Gráficos</a>
                     </div>
                 </li>
             </ul>
@@ -70,7 +68,7 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                     </form>
                 </div>
                 <form method="post" action="search.php">
-                    <a class="btn btn-success " style="font-size: 16px; font-weight:500;" href="/pi353socialdigital/src/admin/screen.php">NOVO</a>
+                    <a class="btn btn-success " style="font-size: 16px; font-weight:500;" href="/pi353socialdigital/src/admin/visitas/vscreen.php">NOVO</a>
                 </form>
             </div>
 
@@ -78,13 +76,10 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                 <thead class="thead-Primary">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">CPF</th>
-                        <th scope="col">RG</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Celular</th>
-                        <th scope="col">Nascimento</th>
-                        <th scope="col">Cadastro</th>
+                        <th scope="col">Visitante</th>
+                        <th scope="col">Local</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Hora</th>
                         <th scope="col">Ação</th>
                     </tr>
                 </thead>
@@ -92,14 +87,11 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                     <?php
                     while ($row = mysqli_fetch_array($results)) { ?>
                         <tr>
-                            <td><?php echo $row['id_usuario']; ?></td>
-                            <td><?php echo $row['nome_usuario']; ?></td>
-                            <td><?php echo $row['cpf_usuario']; ?></td>
-                            <td><?php echo $row['rg_usuario']; ?></td>
-                            <td><?php echo $row['email_usuario']; ?></td>
-                            <td><?php echo $row['celular_usuario']; ?></td>
-                            <td><?php echo $row['dtNasc_usuario']; ?></td>
-                            <td><?php echo $row['dtCad_usuario']; ?></td>
+                            <td><?php echo $row['id_visita']; ?></td>
+                            <td><?php echo $row['visitante_visita']; ?></td>
+                            <td><?php echo $row['local_visita']; ?></td>
+                            <td><?php echo $row['data_visita']; ?></td>
+                            <td><?php echo $row['hora_visita']; ?></td>
 
                             <td>
                                 <a name="edit" href="screenEdit.php?id=<?= $row['id_usuario']; ?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>

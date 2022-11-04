@@ -1,5 +1,5 @@
 <?php
-    include_once('connect.php');
+    include_once('../connect.php');
     include_once('var.php');
 
 $sql = "INSERT INTO usuarios(
@@ -42,6 +42,6 @@ $sql = "INSERT INTO usuarios(
     <title>Social Digital - ADMIN</title>
 </head>
 <body>
-    <a href="/pi353socialdigital/src/admin/read.php">Ver registros</a>
+    <a href="read.php">Ver registros</a>
 </body>
 </html>

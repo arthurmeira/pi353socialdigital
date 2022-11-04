@@ -22,7 +22,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/screen.php">Novo usuário</a>
                         <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Tabela de usuários</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Relatório</a>
+                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Relatório de usuário</a>
                     </div>
 
                 </li>
@@ -33,7 +33,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vScreen.php">Nova visita</a>
                         <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Tabela de visitas</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Relatório</a>
+                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Relatório de visita</a>
                     </div>
 
                 </li>
@@ -43,8 +43,6 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Mensagens</a>
-                        <a class="dropdown-item" href="#">Feedbacks</a>
-                        <a class="dropdown-item" href="#">Gráficos</a>
                     </div>
                 </li>
             </ul>
@@ -53,7 +51,7 @@
 
     <br><br>
 
-    <form method="POST" action="create.php" style="width: 60%; margin: auto;">
+    <form method="POST" action="/pi353socialdigital/src/admin/usuarios/create.php" style="width: 60%; margin: auto;">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Nome</label>

@@ -1,24 +1,23 @@
 <?php
     include_once('../connect.php');
-    include_once('var.php');
+    include_once('vvar.php');
 
-$sql = "INSERT INTO usuarios(
-            nome_usuario, 
+$sql = "INSERT INTO visitas(
+            visitanteVi, 
             cpf_usuario, 
-            rg_usuario, 
-            email_usuario, 
-            celular_usuario, 
-            dtNasc_usuario, 
-            dtCad_usuario
+            dataVi, 
+            horaVi, 
+            localVi, 
+            obsVi, 
+            descVi
             ) 
         VALUES(    
-            '$name_user',
-            '$cpf_user',
-            '$rg_user',
-            '$email_user',
-            '$celular_user',
-            '$dtNasc_user',
-            '$dtCad_user'
+            '$visitante_visita',
+            '$data_visita',
+            '$hora_visita',
+            '$local_visita',
+            '$observacao_visita',
+            '$descricao_visita'
             )";
 
     if ($conn->query($sql) === TRUE) {
