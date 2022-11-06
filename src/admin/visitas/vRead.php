@@ -1,7 +1,8 @@
 <?php
-//Chamando todos os arquivos necessários 
-include_once("../connect.php");
-$results = mysqli_query($conn, "SELECT * FROM visitas");
+    //Chamando todos os arquivos necessários 
+    include_once("../connect.php");
+    $results = mysqli_query($conn, "SELECT * FROM visitas");
+    
 ?>
 
 <!DOCTYPE html>
@@ -85,17 +86,21 @@ $results = mysqli_query($conn, "SELECT * FROM visitas");
                 </thead>
                 <tbody>
                     <?php
-                    while ($row = mysqli_fetch_array($results)) { ?>
+                        while ($row = mysqli_fetch_array($results)) { 
+                            $id_visita = $row['id_visitas'];
+                            $local_visita = $row['local_visita'];
+                            $data_visita = $row['data_visita'];
+                            $hora_visita = $row['hora_visita'];
+                    ?>
                         <tr>
-                            <td><?php echo $row['id_visita']; ?></td>
-                            <td><?php echo $row['visitante_visita']; ?></td>
-                            <td><?php echo $row['local_visita']; ?></td>
-                            <td><?php echo $row['data_visita']; ?></td>
-                            <td><?php echo $row['hora_visita']; ?></td>
+                            <td><?=$id_visita?></td>
+                            <td><?=$local_visita?></td>
+                            <td><?=$data_visita?></td>
+                            <td><?=$hora_visita?></td>
 
                             <td>
-                                <a name="edit" href="screenEdit.php?id=<?= $row['id_usuario']; ?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>
-                                <a name="del" href="delete.php?id=<?= $row['id_usuario']; ?>"  class="del_btn"><img src="/pi353socialdigital/IMAGES/lixo.png" alt="trash"></a>
+                                <a name="edit" href="vScreenEdit.php?id=<?= $id_visita ?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>
+                                <a name="del" href="vDelete.php?id=<?= $id_visita ?>"  class="del_btn"><img src="/pi353socialdigital/IMAGES/lixo.png" alt="trash"></a>
                             </td>
                         </tr>
                     <?php } ?>

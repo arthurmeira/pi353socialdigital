@@ -1,7 +1,7 @@
 <?php
     include_once('connect.php');
     include_once('var.php');
-    $id_user = $_POST['id_user'];
+    $id_user = $_POST['id_visita'];
 
 $sql = "UPDATE usuarios SET 
             nome_usuario ='$name_user',

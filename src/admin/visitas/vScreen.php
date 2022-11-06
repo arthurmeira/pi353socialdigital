@@ -57,7 +57,14 @@
             <div class="form-group col-md-4">
                 <label for="inputEstado">Visitante</label>
                 <select id="visitanteVi" name="visitanteVi" class="form-control">
-                    <option selected>Selecione</option>
+                    <?php
+                        include_once("../connect.php");
+                        $results = mysqli_query($conn, "SELECT * FROM usuarios");
+
+                        while ($row = mysqli_fetch_array($results)) { 
+                            echo '<option value="'.$row['id_visitas'].'">'.$row['fk_usuario'].'</option>';
+                        }
+                    ?>
                 </select>
             </div>
             <div class="form-group col-md-4">
@@ -86,7 +93,7 @@
             </div>
         </div>
 
-        </div>
+        
         <button type="submit" name="sbmt" class="btn btn-primary col-md-12">Cadastrar</button>
 
     </form>

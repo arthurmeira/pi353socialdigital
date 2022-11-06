@@ -3,13 +3,12 @@
     include_once('vvar.php');
 
 $sql = "INSERT INTO visitas(
-            visitanteVi, 
-            cpf_usuario, 
-            dataVi, 
-            horaVi, 
-            localVi, 
-            obsVi, 
-            descVi
+            visitanteVi,
+            data_visita, 
+            hora_visita, 
+            local_visita, 
+            observacao_visita, 
+            descricao_visita
             ) 
         VALUES(    
             '$visitante_visita',
@@ -41,6 +40,6 @@ $sql = "INSERT INTO visitas(
     <title>Social Digital - ADMIN</title>
 </head>
 <body>
-    <a href="/pi353socialdigital/src/admin/read.php">Ver registros</a>
+    <a href="/pi353socialdigital/src/admin/visitas/vRead.php">Ver registros</a>
 </body>
 </html>

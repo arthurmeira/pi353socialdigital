@@ -13,7 +13,7 @@
     <h3><a href="read.php" class="back_btn">Voltar</a></h3>
 
     <?php
-    include_once('connect.php');
+    include_once('../connect.php');
 
     $buscar = $_POST['buscar'];
     $submit = $_POST['sbmt'];

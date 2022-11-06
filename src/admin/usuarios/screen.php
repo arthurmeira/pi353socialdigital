@@ -64,22 +64,28 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-3">
+        <div class="form-group col-md-2">
+                <label for="tipo_usuario">Tipo de Usuário</label>
+                <select id="tipo_usuario" name="tipo_usuario" class="form-control">
+                    <?php
+                        include_once("../connect.php");
+                        $results = mysqli_query($conn, "SELECT * FROM tipo_usuario");
+
+                        while ($row = mysqli_fetch_array($results)) { 
+                            echo '<option value="'.$row['id_tipo'].'">'.$row['nome_tipo'].'</option>';
+                        }
+                    ?>
+                </select>
+        </div> 
+            <div class="form-group col-md-4">
                 <label for="inputAddress">CPF</label>
                 <input type="text" class="form-control" name="cpf_user" id="userCpf" placeholder="CPF" required>
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-4">
                 <label for="inputAddress2">RG</label>
                 <input type="text" class="form-control" name="rg_user" id="userRg" placeholder="RG" required>
             </div>
-            <div class="form-group col-md-6">
-                <label for="inputCity">Celular</label>
-                <input type="text" class="form-control" name="cel_user" id="userCel" placeholder="Celular" required>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col-md-1">
+            <div class="form-group col-md-2">
                 <label for="inputEstado">Estado</label>
                 <select id="UF" name="UF" class="form-control">
                     <option selected>UF</option>
@@ -112,7 +118,11 @@
                     <option value="TO">TO</option>
                 </select>
             </div>
-            <div class="form-group col-md-5">
+            
+        </div>
+
+        <div class="form-row">                        
+            <div class="form-group col-md-6">
                 <label for="inputCEP">Cidade</label>
                 <input type="text" class="form-control" name="cidade_cidade" id="cidade_cidade" placeholder="Cidade" required>
             </div>
@@ -122,19 +132,20 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputEmail4">Endereço</label>
-                <input class="form-control" type="text" name="end_user" id="userEnd" placeholder="Endereço" required>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Endereço</label>
+                    <input class="form-control" type="text" name="end_user" id="userEnd" placeholder="Endereço" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputPassword4">Nascimento</label>
+                    <input class="form-control" type="date" name="dtNasc_user" id="userDtNasc" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputPassword4">Cadastro</label>
+                    <input class="form-control" type="date" name="dtCad_user" id="userDtCad" value="<?= date('Y-d-m'); ?>" required>
+                </div>
             </div>
-            <div class="form-group col-md-3">
-                <label for="inputPassword4">Nascimento</label>
-                <input class="form-control" type="date" name="dtNasc_user" id="userDtNasc" required>
-            </div>
-            <div class="form-group col-md-3">
-                <label for="inputPassword4">Cadastro</label>
-                <input class="form-control" type="date" name="dtCad_user" id="userDtCad" value="<?php echo date('Y-d-m'); ?>" required>
-            </div>
-        </div>
+        
         <button type="submit" name="sbmt" class="btn btn-primary col-md-12">Cadastrar</button>
 
     </form>

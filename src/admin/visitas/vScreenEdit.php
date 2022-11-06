@@ -18,7 +18,7 @@
         <div id="mid-edit">
             <fieldset>
                 <form method="POST" action="edit.php">
-                    <input type="hidden" id="id_user" name="id_user" value="<?=$_GET['id'];?>"/>
+                    <input type="hidden" id="id_visita" name="id_visita" value="<?=$_GET['id'];?>"/>
                     <label for="name_user">Nome</label><br>
                     <input type="text" name="nome_user" id="userName" value="<?php echo 'Nome' ?>" required><br><br>
 

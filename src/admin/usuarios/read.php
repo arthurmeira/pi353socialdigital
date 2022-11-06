@@ -90,16 +90,26 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                 </thead>
                 <tbody>
                     <?php
-                    while ($row = mysqli_fetch_array($results)) { ?>
+                    while ($row = mysqli_fetch_array($results)) { 
+                        $id_usuario = $row['id_usuario'];
+                        $name_user = $row['nome_usuario'];
+                        $cpf_user = $row['cpf_usuario'];
+                        $rg_user = $row['rg_usuario'];
+                        $email_user = $row['email_usuario'];
+                        $id_usuario = $row['celular_usuario'];
+                        $dtNasc_user = $row['dtNasc_usuario'];
+                        $dtCad_user = $row['dtCad_usuario']; 
+                    ?>
+                    
                         <tr>
-                            <td><?php echo $row['id_usuario']; ?></td>
-                            <td><?php echo $row['nome_usuario']; ?></td>
-                            <td><?php echo $row['cpf_usuario']; ?></td>
-                            <td><?php echo $row['rg_usuario']; ?></td>
-                            <td><?php echo $row['email_usuario']; ?></td>
-                            <td><?php echo $row['celular_usuario']; ?></td>
-                            <td><?php echo $row['dtNasc_usuario']; ?></td>
-                            <td><?php echo $row['dtCad_usuario']; ?></td>
+                            <td><?=['id_usuario']; ?></td>
+                            <td><?=['nome_usuario']; ?></td>
+                            <td><?=['cpf_usuario']; ?></td>
+                            <td><?=['rg_usuario']; ?></td>
+                            <td><?=['email_usuario']; ?></td>
+                            <td><?=['celular_usuario']; ?></td>
+                            <td><?=['dtNasc_usuario']; ?></td>
+                            <td><?=['dtCad_usuario']; ?></td>
 
                             <td>
                                 <a name="edit" href="screenEdit.php?id=<?= $row['id_usuario']; ?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>
