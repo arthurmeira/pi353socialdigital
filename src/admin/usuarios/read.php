@@ -82,7 +82,6 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                         <th scope="col">CPF</th>
                         <th scope="col">RG</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Celular</th>
                         <th scope="col">Nascimento</th>
                         <th scope="col">Cadastro</th>
                         <th scope="col">Ação</th>
@@ -96,24 +95,22 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                         $cpf_user = $row['cpf_usuario'];
                         $rg_user = $row['rg_usuario'];
                         $email_user = $row['email_usuario'];
-                        $id_usuario = $row['celular_usuario'];
                         $dtNasc_user = $row['dtNasc_usuario'];
                         $dtCad_user = $row['dtCad_usuario']; 
                     ?>
                     
                         <tr>
-                            <td><?=['id_usuario']; ?></td>
-                            <td><?=['nome_usuario']; ?></td>
-                            <td><?=['cpf_usuario']; ?></td>
-                            <td><?=['rg_usuario']; ?></td>
-                            <td><?=['email_usuario']; ?></td>
-                            <td><?=['celular_usuario']; ?></td>
-                            <td><?=['dtNasc_usuario']; ?></td>
-                            <td><?=['dtCad_usuario']; ?></td>
+                            <td><?=$row['id_usuario'];?></td>
+                            <td><?=$row['nome_usuario']; ?></td>
+                            <td><?=$row['cpf_usuario']; ?></td>
+                            <td><?=$row['rg_usuario']; ?></td>
+                            <td><?=$row['email_usuario']; ?></td>
+                            <td><?=$row['dtNasc_usuario']; ?></td>
+                            <td><?=$row['dtCad_usuario']; ?></td>
 
                             <td>
                                 <a name="edit" href="screenEdit.php?id=<?= $row['id_usuario']; ?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>
-                                <a name="del" href="view.php?id=<?= $row['id_usuario']; ?>"  class="view_btn"><img src="/pi353socialdigital/IMAGES/vision.png" alt="view"></a>
+                                <a name="del" href="view.php?id=<?= $row['id_usuario']; ?>"  class="view_btn"><img src="/pi353socialdigital/IMAGES/impressao.png" alt="view"></a>
                                 <a name="del" href="delete.php?id=<?= $row['id_usuario']; ?>"  class="del_btn"><img src="/pi353socialdigital/IMAGES/lixo.png" alt="trash"></a>
                             </td>
                         </tr>

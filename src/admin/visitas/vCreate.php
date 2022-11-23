@@ -2,7 +2,7 @@
     include_once('../connect.php');
     include_once('vvar.php');
 
-$sql = "INSERT INTO visitas(
+$sql_visitas = "INSERT INTO visitas(
             visitanteVi,
             data_visita, 
             hora_visita, 
@@ -19,13 +19,16 @@ $sql = "INSERT INTO visitas(
             '$descricao_visita'
             )";
 
-    if ($conn->query($sql) === TRUE) {
+    if ($conn->query($sql_visitas) === TRUE) {
+        $query = $conn->query($sql_visitas);
+        $fk_cidade = $conn->insert_id;
         echo "New record created successfully <br>";
-        echo $sql;
+        echo $sql_visitas;
         
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+    }           
+
 
     mysqli_close($conn);
 

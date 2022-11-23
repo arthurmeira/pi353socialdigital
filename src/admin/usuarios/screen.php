@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
         <a class="navbar-brand" href="#">Social Digital</a>
 
         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
@@ -52,6 +52,7 @@
     <br><br>
 
     <form method="POST" action="/pi353socialdigital/src/admin/usuarios/create.php" style="width: 60%; margin: auto;">
+            
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Nome</label>
@@ -64,97 +65,168 @@
         </div>
 
         <div class="form-row">
-        <div class="form-group col-md-2">
+            <div class="form-group col-md-2">
                 <label for="tipo_usuario">Tipo de Usuário</label>
                 <select id="tipo_usuario" name="tipo_usuario" class="form-control">
                     <?php
-                        include_once("../connect.php");
-                        $results = mysqli_query($conn, "SELECT * FROM tipo_usuario");
+                    include_once("../connect.php");
+                    $results = mysqli_query($conn, "SELECT * FROM tipo_usuario");
 
-                        while ($row = mysqli_fetch_array($results)) { 
-                            echo '<option value="'.$row['id_tipo'].'">'.$row['nome_tipo'].'</option>';
-                        }
+                    while ($row = mysqli_fetch_array($results)) {
+                        echo '<option value="' . $row['id_tipo'] . '">' . $row['nome_tipo'] . '</option>';
+                    }
                     ?>
                 </select>
-        </div> 
-            <div class="form-group col-md-4">
+            </div>
+            <div class="form-group col-md-3">
                 <label for="inputAddress">CPF</label>
-                <input type="text" class="form-control" name="cpf_user" id="userCpf" placeholder="CPF" required>
+                <input type="text" class="form-control" name="cpf_user" id="userCpf" placeholder="CPF" maxlength="11" required>
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label for="inputAddress2">RG</label>
-                <input type="text" class="form-control" name="rg_user" id="userRg" placeholder="RG" required>
+                <input type="text" class="form-control" name="rg_user" id="userRg" placeholder="RG" maxlength="7" required>
             </div>
+
+
             <div class="form-group col-md-2">
-                <label for="inputEstado">Estado</label>
-                <select id="UF" name="UF" class="form-control">
-                    <option selected>UF</option>
-                    <option value="AC">AC</option>
-                    <option value="AL">AL</option>
-                    <option value="AP">AP</option>
-                    <option value="AM">AM</option>
-                    <option value="BA">BA</option>
-                    <option value="CE">CE</option>
-                    <option value="DF">DF</option>
-                    <option value="ES">ES</option>
-                    <option value="GO">GO</option>
-                    <option value="MA">MA</option>
-                    <option value="MS">MS</option>
-                    <option value="MT">MT</option>
-                    <option value="MG">MG</option>
-                    <option value="PA">PA</option>
-                    <option value="PB">PB</option>
-                    <option value="PR">PR</option>
-                    <option value="PE">PE</option>
-                    <option value="PI">PI</option>
-                    <option value="RJ">RJ</option>
-                    <option value="RN">RN</option>
-                    <option value="RS">RS</option>
-                    <option value="RO">RO</option>
-                    <option value="RR">RR</option>
-                    <option value="SC">SC</option>
-                    <option value="SP">SP</option>
-                    <option value="SE">SE</option>
-                    <option value="TO">TO</option>
-                </select>
+                    <label>Estado</label>
+                    <select class="form-control" name="estado_user" type="text" placeholder="UF" required id="uf" name="" id="">
+                        <?php
+                        include_once("../connect.php");
+                        $results = mysqli_query($conn, "SELECT * FROM estados");
+
+                        while ($row = mysqli_fetch_array($results)) {
+                            echo '<option value="' . $row['id_estado'] . '">' . $row['uf_estado'] . " - " . $row['descricao'] .  '</option>';
+                        }
+                    ?>
+                    </select>
+                    
+                </div>
+
+            <div class="form-group col-md-2">
+                <label>CEP</label>
+                <input placeholder="CEP" class="form-control" name="cep" type="text" id="cep" value="" size="10" maxlength="9" onchange="pesquisacep(this.value);" />
             </div>
-            
+
         </div>
 
-        <div class="form-row">                        
-            <div class="form-group col-md-6">
-                <label for="inputCEP">Cidade</label>
-                <input type="text" class="form-control" name="cidade_cidade" id="cidade_cidade" placeholder="Cidade" required>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputCity">Bairro</label>
-                <input type="text" class="form-control" name="bairro_user" id="userBairro" placeholder="Bairro" required>
-            </div>
-        </div>
-        <div class="form-row">
+        <form method="get" action=".">
+            <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputEmail4">Endereço</label>
-                    <input class="form-control" type="text" name="end_user" id="userEnd" placeholder="Endereço" required>
+                    <label>Rua</label>
+                    <input class="form-control" name="rua_user" type="text" placeholder="Rua" required id="rua" size="60" />
                 </div>
+
+                <div class="form-group col-md-6">
+                    <label>Bairro</label>
+                    <input class="form-control" name="bairro_user" type="text" placeholder="Bairro" required id="bairro" size="40" />
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Cidade</label>
+                    <input class="form-control" name="cidade_user" id="cidade" placeholder="Cidade" required id="cidade" size="40" />
+                </div>
+
                 <div class="form-group col-md-3">
                     <label for="inputPassword4">Nascimento</label>
                     <input class="form-control" type="date" name="dtNasc_user" id="userDtNasc" required>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="inputPassword4">Cadastro</label>
-                    <input class="form-control" type="date" name="dtCad_user" id="userDtCad" value="<?= date('Y-d-m'); ?>" required>
+                    <input class="form-control" type="date" name="dtCad_user" id="userDtCad" value="<?=date('d/m/Y');?>" required>
                 </div>
-            </div>
-        
-        <button type="submit" name="sbmt" class="btn btn-primary col-md-12">Cadastrar</button>
 
+            </div>
+            <button type="submit" name="sbmt" class="btn btn-primary col-md-12">Cadastrar</button>
+        </form>
     </form>
 
     <br><br>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- Adicionando Javascript -->
+    <script>
+        function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('rua').value = ("");
+            document.getElementById('bairro').value = ("");
+            document.getElementById('cidade').value = ("");
+            document.getElementById('uf').value = ("");
+            document.getElementById('ibge').value = ("");
+        }
+
+        function meu_callback(conteudo) {
+            if (!("erro" in conteudo)) {
+                //Atualiza os campos com os valores.
+                document.getElementById('rua').value = (conteudo.logradouro);
+                document.getElementById('bairro').value = (conteudo.bairro);
+                document.getElementById('cidade').value = (conteudo.localidade);
+                document.getElementById('uf').value = (conteudo.uf);
+                document.getElementById('ibge').value = (conteudo.ibge);
+            } //end if.
+            else {
+                //CEP não Encontrado.
+                limpa_formulário_cep();
+                alert("CEP não encontrado.");
+            }
+        }
+
+        function pesquisacep(valor) {
+
+            //Nova variável "cep" somente com dígitos.
+            var cep = valor.replace(/\D/g, '');
+
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
+
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+
+                //Valida o formato do CEP.
+                if (validacep.test(cep)) {
+
+                    //Preenche os campos com "..." enquanto consulta webservice.
+                    document.getElementById('rua').value = "...";
+                    document.getElementById('bairro').value = "...";
+                    document.getElementById('cidade').value = "...";
+                    document.getElementById('uf').value = "...";
+                    document.getElementById('ibge').value = "...";
+
+                    //Cria um elemento javascript.
+                    var script = document.createElement('script');
+
+                    //Sincroniza com o callback.
+                    script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+
+                    //Insere script no documento e carrega o conteúdo.
+                    document.body.appendChild(script);
+
+                } //end if.
+                else {
+                    //cep é inválido.
+                    limpa_formulário_cep();
+                    alert("Formato de CEP inválido.");
+                }
+            } //end if.
+            else {
+                //cep sem valor, limpa formulário.
+                limpa_formulário_cep();
+            }
+        }
+    </script>
+
+
+
+    <!-- Inicio do formulario -->
+    <form method="get" action=".">
+        <input name="ibge" type="hidden" id="ibge" size="8" /></label><br />
+    </form>
+</body>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 
 </html>

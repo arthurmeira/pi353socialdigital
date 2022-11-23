@@ -9,9 +9,7 @@ $sql_estado = "INSERT INTO estados(
         VALUES(    
             '$estado_user'
             )";
-
-
-
+            
 /*
         if ($conn->query($sql_estado) === TRUE) {
             $query = $conn->query($sql_estado);
@@ -26,6 +24,7 @@ $sql_estado = "INSERT INTO estados(
         mysqli_close($conn);
         */
 
+
 if ($conn->query($sql_estado) === TRUE) {
     echo "New record created successfully <br>";
     echo $sql_estado;
@@ -33,6 +32,10 @@ if ($conn->query($sql_estado) === TRUE) {
     echo "Error: " . $sql_estado . "<br>" . $conn->error;
 }
 
+$id_estado = mysqli_query($conn, "SELECT id_estado FROM estados");
+
+$fk_estado = $_POST['estado_user'];
+$fk_cidade = $_POST['cidade_user'];
 
 // Cadastro de Cidade
 $sql_cidade = "INSERT INTO cidades(
@@ -44,14 +47,15 @@ $sql_cidade = "INSERT INTO cidades(
             '$fk_estado'
             )"; 
 
+
 if ($conn->query($sql_cidade) === TRUE) {
-    $query = $conn->query($sql);
-    $fk_estado = $query->insert_id;
+    $query = $conn->query($sql_cidade);
+    $fk_cidade = $conn->insert_id;
     echo "New record created successfully <br>";
     echo $sql_cidade;
     
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $sql_cidade . "<br>" . $conn->error;
 }
     #mysqli_insert_id
 
@@ -68,61 +72,36 @@ $sql_bairro = "INSERT INTO bairros(
             )";
 
 if ($conn->query($sql_bairro) === TRUE) {
+    $query = $conn->query($sql_bairro);
+    $fk_bairro = $conn->insert_id;
     echo "New record created successfully <br>";
     echo $sql_bairro;
+    
 } else {
     echo "Error: " . $sql_bairro . "<br>" . $conn->error;
 }
 
+$fk_endereco = $_POST['rua_user'];
 
 // Cadastro de Endereço
 $sql_endereco = "INSERT INTO endereco(
-            desc_endereco,
+            nome_rua,
             fk_bairro
             ) 
         VALUES(    
-            '$endereco_user',
+            '$rua_user',
             '$fk_bairro'
             )";
 
 if ($conn->query($sql_endereco) === TRUE) {
+    $query = $conn->query($sql_endereco);
+    $fk_endereco = $conn->insert_id;
     echo "New record created successfully <br>";
     echo $sql_endereco;
-} else {
-    echo "Error: " . $sql_endereco . "<br>" . $conn->error;
-}
-
-/* Cadastro de Endereço
-    $sql = "INSERT INTO endereco(
-        nome_usuario, 
-        cpf_usuario, 
-        rg_usuario, 
-        email_usuario, 
-        celular_usuario, 
-        dtNasc_usuario, 
-        dtCad_usuario
-        ) 
-    VALUES(    
-        '$name_user',
-        '$cpf_user',
-        '$rg_user',
-        '$email_user',
-        '$celular_user',
-        '$dtNasc_user',
-        '$dtCad_user'
-        )";
-
-    $query = $conn->query($sql);
-
-    $id_endereco = $query->insert_id;
-    echo "New record created successfully <br>";
-    echo $sql;
     
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
-    mysqli_insert_id
-    */
 
 // Cadastro Usuário
 $sql = "INSERT INTO usuarios(
@@ -145,7 +124,7 @@ $sql = "INSERT INTO usuarios(
             )";
 
 if ($conn->query($sql) === TRUE) {
-    $id_endereco = $query->insert_id;
+    $id_endereco = $conn->insert_id;
     echo "New record created successfully <br>";
     echo $sql;
 } else {

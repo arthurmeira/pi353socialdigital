@@ -31,8 +31,12 @@
             </ul>
         </div>
     </nav>
+    <br><br>
 
 
+    <div class="container" style="text-align: justify;">
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae diam pretium, tempor sapien vitae, dignissim lorem. Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.</p>
 
     <div>
         <img src="/pi353socialdigital/IMAGES/kids-image.png" class="img-fluid" alt="Responsive image">
@@ -45,11 +49,7 @@
 
     <br>
 
-    <div class="container" style="text-align: justify;">
-
         <div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae diam pretium, tempor sapien vitae, dignissim lorem. Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.</p>
-            <p>Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae diam pretium, tempor sapien vitae, dignissim lorem. Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae diam pretium, tempor sapien vitae, dignissim lorem. Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.</p>
             <p>Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae diam pretium, tempor sapien vitae, dignissim lorem. Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.</p>
         </div>

@@ -54,19 +54,23 @@
     <form method="POST" action="/pi353socialdigital/src/admin/visitas/vcreate.php" style="width: 60%; margin: auto;">
 
         <div class="form-row">
+
             <div class="form-group col-md-4">
                 <label for="inputEstado">Visitante</label>
+
                 <select id="visitanteVi" name="visitanteVi" class="form-control">
                     <?php
                         include_once("../connect.php");
                         $results = mysqli_query($conn, "SELECT * FROM usuarios");
 
                         while ($row = mysqli_fetch_array($results)) { 
-                            echo '<option value="'.$row['id_visitas'].'">'.$row['fk_usuario'].'</option>';
+                            echo '<option value="'.$row['id_visitas'].'">'.$row['nome_usuario'].'</option>';
                         }
                     ?>
                 </select>
+
             </div>
+
             <div class="form-group col-md-4">
                 <label for="inputPassword4">Data</label>
                 <input class="form-control" type="date" name="dataVi" id="dataVi" required>
