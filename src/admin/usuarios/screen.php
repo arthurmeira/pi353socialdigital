@@ -60,7 +60,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="inputPassword4">Email</label>
-                <input class="form-control" name="email_user" id="userEmail" placeholder="Email" required>
+                  <input class="form-control" name="email_user" id="userEmail" placeholder="Email" required>
             </div>
         </div>
 
@@ -87,8 +87,28 @@
                 <input type="text" class="form-control" name="rg_user" id="userRg" placeholder="RG" maxlength="7" required>
             </div>
 
-
             <div class="form-group col-md-2">
+                    <label for="inputPassword4">Nascimento</label>
+                    <input class="form-control" type="date" name="dtNasc_user" id="userDtNasc" required>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputPassword4">Cadastro</label>
+                    <input class="form-control" type="date" name="dtCad_user" id="userDtCad" value="<?=date('d/m/Y');?>" required>
+                </div>
+        </div>
+
+        
+        <form method="get" action=".">
+        
+        
+        <div class="form-row">
+        
+        <div class="form-group col-md-3">
+                <label>CEP</label>
+                <input placeholder="CEP" class="form-control" name="cep" type="text" id="cep" value="" size="10" maxlength="9" onchange="pesquisacep(this.value);" />
+            </div>
+
+            <div class="form-group col-md-1">
                     <label>Estado</label>
                     <select class="form-control" name="estado_user" type="text" placeholder="UF" required id="uf" name="" id="">
                         <?php
@@ -96,25 +116,17 @@
                         $results = mysqli_query($conn, "SELECT * FROM estados");
 
                         while ($row = mysqli_fetch_array($results)) {
-                            echo '<option value="' . $row['id_estado'] . '">' . $row['uf_estado'] . " - " . $row['descricao'] .  '</option>';
+                            echo '<option value="' . $row['id_estado'] . '">' . $row['uf_estado'] . '</option>';
                         }
                     ?>
                     </select>
                     
                 </div>
-
-            <div class="form-group col-md-2">
-                <label>CEP</label>
-                <input placeholder="CEP" class="form-control" name="cep" type="text" id="cep" value="" size="10" maxlength="9" onchange="pesquisacep(this.value);" />
-            </div>
-
-        </div>
-
-        <form method="get" action=".">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Rua</label>
-                    <input class="form-control" name="rua_user" type="text" placeholder="Rua" required id="rua" size="60" />
+                
+            
+                <div class="form-group col-md-8">
+                    <label>Cidade</label>
+                    <input class="form-control" name="cidade_user" id="cidade" placeholder="Cidade" required id="cidade" size="40" />
                 </div>
 
                 <div class="form-group col-md-6">
@@ -123,19 +135,9 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label>Cidade</label>
-                    <input class="form-control" name="cidade_user" id="cidade" placeholder="Cidade" required id="cidade" size="40" />
+                    <label>Rua</label>
+                    <input class="form-control" name="rua_user" type="text" placeholder="Rua" required id="rua" size="60" />
                 </div>
-
-                <div class="form-group col-md-3">
-                    <label for="inputPassword4">Nascimento</label>
-                    <input class="form-control" type="date" name="dtNasc_user" id="userDtNasc" required>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="inputPassword4">Cadastro</label>
-                    <input class="form-control" type="date" name="dtCad_user" id="userDtCad" value="<?=date('d/m/Y');?>" required>
-                </div>
-
             </div>
             <button type="submit" name="sbmt" class="btn btn-primary col-md-12">Cadastrar</button>
         </form>

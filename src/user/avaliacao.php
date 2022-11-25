@@ -11,7 +11,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary ">
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
         <a class="navbar-brand" href="#">Social Digital</a>
 
         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
@@ -21,9 +21,6 @@
                 </li>
                 <li>
                     <a class="nav-link active" href="/pi353socialdigital/src/user/avaliacao.php">Avaliação</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/pi353socialdigital/src/user/contato.php">Contato</a>
                 </li>
                 <li>
                     <a class="nav-link " href="/pi353socialdigital/src/user/perfil.php">Perfil</a>
@@ -35,13 +32,12 @@
     <br><br>
 
     <div class="container">
-        <div class="card">
             <form action="/pi353socialdigital/src/user/avaliacao.php" method="POST">
                 <table class="table table-striped">
                     <thead class="thead-Primary">
                         <ul class="list-group">
                             <h4 class="list-group-item active">Avaliação</h4>
-                            <li class="list-group-item">Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
+                            <li class="list-group-item" style="display: flex; align-items: center;">Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
                                 <select class="form-control-sm btn-outline-primary" name="anota" id="anota" style="float: right;">
                                     <option value="Nota">Nota</option>
                                     <option value="1">1</option>
@@ -51,7 +47,7 @@
                                     <option value="5">5</option>
                                 </select>
                             </li>
-                            <li class="list-group-item">Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
+                            <li class="list-group-item" style="display: flex; align-items: center;">Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
                                 <select class="form-control-sm btn-outline-primary" name="bnota" id="bnota" style="float: right;">
                                     <option value="Nota">Nota</option>
                                     <option value="1">1</option>
@@ -61,7 +57,7 @@
                                     <option value="5">5</option>
                                 </select>
                             </li>
-                            <li class="list-group-item">Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
+                            <li class="list-group-item" style="display: flex; align-items: center;">Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
                                 <select class="form-control-sm btn-outline-primary" name="cnota" id="cnota" style="float: right;">
                                     <option value="Nota">Nota</option>
                                     <option value="1">1</option>
@@ -71,7 +67,7 @@
                                     <option value="5">5</option>
                                 </select>
                             </li>
-                            <li class="list-group-item">Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
+                            <li class="list-group-item" style="display: flex; align-items: center;">Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
                                 <select class="form-control-sm btn-outline-primary" name="dnota" id="dnota" style="float: right;">
                                     <option value="Nota">Nota</option>
                                     <option value="1">1</option>
@@ -81,7 +77,7 @@
                                     <option value="5">5</option>
                                 </select>
                             </li>
-                            <li class="list-group-item">Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
+                            <li class="list-group-item" style="display: flex; align-items: center;">Suspendisse potenti. Phasellus scelerisque magna id nulla venenatis, sed scelerisque velit pharetra. Vivamus lacus elit, tincidunt ut risus ut, venenatis facilisis urna.
                                 <select class="form-control-sm btn-outline-primary" name="enota" id="enota" style="float: right;">
                                     <option value="Nota">Nota</option>
                                     <option value="1">1</option>
@@ -98,7 +94,6 @@
                     </thead>
                 </table>
             </form>
-        </div>
     </div>
 
 

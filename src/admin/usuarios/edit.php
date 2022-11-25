@@ -3,12 +3,15 @@
     include_once('var.php');
     $id_user = $_POST['id_user'];
 
+$sql_endereco = "UPDATE usuarios SET 
+            fk_estado 
+        WHERE id_usuario = $id_user; ";
+
 $sql = "UPDATE usuarios SET 
             nome_usuario ='$name_user',
             cpf_usuario = '$cpf_user',
             rg_usuario = '$rg_user',
             email_usuario = '$email_user', 
-            celular_usuario = '$celular_user', 
             dtNasc_usuario = '$dtNasc_user', 
             dtCad_usuario = '$dtCad_user'
         WHERE id_usuario = $id_user; ";
