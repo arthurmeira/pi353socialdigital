@@ -52,7 +52,7 @@
     <br><br>
 
     <?php
-        include_once("connect.php");
+        include_once("../connect.php");
     ?>
 
     <form method="POST" action="/pi353socialdigital/src/admin/usuarios/edit.php" style="width: 60%; margin: auto;">
@@ -62,19 +62,17 @@
                 <label for="inputEmail4">Nome</label>
                 <input class="form-control" type="text" name="nome_user" id="userName" placeholder="Nome" required
                     <?php
-                        $select = mysqli_query($conn, "SELECT nome_usuario FROM usuarios where id_usuario = 18");
-
+                        $select = mysqli_query($conn, "SELECT nome_usuario FROM usuarios where id_usuario = 26");
                         while ($row = mysqli_fetch_array($select)) {
                             echo '<input value="' . $row['nome_usuario'] . '">' . '</input>';
                         }
-                    ?>
-            </div>
+                    '>'?>    
+        </div>
             <div class="form-group col-md-6">
                 <label for="inputPassword4">Email</label>
                   <input class="form-control" name="email_user" id="userEmail" placeholder="Email" required
                   <?php
-                        $select = mysqli_query($conn, "SELECT email_usuario FROM usuarios where id_usuario = 18");
-
+                        $select = mysqli_query($conn, "SELECT email_usuario FROM usuarios where id_usuario = 26");
                         while ($row = mysqli_fetch_array($select)) {
                             echo '<input value="' . $row['email_usuario'] . '">' . '</input>';
                         }
@@ -100,49 +98,48 @@
                 <label for="inputAddress">CPF</label>
                 <input type="text" class="form-control" name="cpf_user" id="userCpf" placeholder="CPF" maxlength="11" required
                 <?php
-                        $select = mysqli_query($conn, "SELECT cpf_usuario FROM usuarios where id_usuario = 18");
+                        $select = mysqli_query($conn, "SELECT cpf_usuario FROM usuarios where id_usuario = 26");
 
                         while ($row = mysqli_fetch_array($select)) {
                             echo '<input value="' . $row['cpf_usuario'] . '">' . '</input>';
                         }
-                    ?>
-                
+                    '>'?>  
             </div>
             <div class="form-group col-md-3">
                 <label for="inputAddress2">RG</label>
                 <input type="text" class="form-control" name="rg_user" id="userRg" placeholder="RG" maxlength="7" required
 
                 <?php
-                        $select = mysqli_query($conn, "SELECT rg_usuario FROM usuarios where id_usuario = 18");
+                        $select = mysqli_query($conn, "SELECT rg_usuario FROM usuarios where id_usuario = 26");
 
                         while ($row = mysqli_fetch_array($select)) {
                             echo '<input value="' . $row['rg_usuario'] . '">' . '</input>';
                         }
-                    ?>
-            </div>
+                    '>'?>  
+        </div>
 
             <div class="form-group col-md-2">
                     <label for="inputPassword4">Nascimento</label>
                     <input class="form-control" type="date" name="dtNasc_user" id="userDtNasc" required
 
                     <?php
-                        $select = mysqli_query($conn, "SELECT * FROM usuarios where id_usuario = 18");
+                        $select = mysqli_query($conn, "SELECT * FROM usuarios where id_usuario = 26");
 
                         while ($row = mysqli_fetch_array($select)) {
                             echo '<input value="' . $row['dtNasc_usuario'] . '">' . '</input>';
                         }
-                    ?>
+                   '>'?>  
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputPassword4">Cadastro</label>
                     <input class="form-control" type="date" name="dtCad_user" id="userDtCad" required
                     <?php
-                        $select = mysqli_query($conn, "SELECT * FROM usuarios where id_usuario = 18");
+                        $select = mysqli_query($conn, "SELECT * FROM usuarios where id_usuario = 26");
 
                         while ($row = mysqli_fetch_array($select)) {
                             echo '<input value="' . $row['dtCad_usuario'] . '">' . '</input>';
                         }
-                    ?>
+                    '>'?>  
                 </div>
         </div>
 
@@ -177,31 +174,37 @@
                     <label>Cidade</label>
                     <input class="form-control" name="cidade_user" id="cidade" placeholder="Cidade" required id="cidade" size="40" 
                     <?php
-                        $select = mysqli_query($conn, "SELECT nome_usuario FROM usuarios where id_usuario = 18");
+                        $select = mysqli_query($conn, "SELECT nome_usuario FROM usuarios where id_usuario = 26");
 
                         while ($row = mysqli_fetch_array($select)) {
                             echo '<input value="' . $row['nome_usuario'] . '">' . '</input>';
                         }
-                    ?>
+                    '>'?>  
                 </div>
 
                 <div class="form-group col-md-6">
                     <label>Bairro</label>
                     <input class="form-control" name="bairro_user" type="text" placeholder="Bairro" required id="bairro" size="40" 
                     <?php
-                        $select = mysqli_query($conn, "SELECT nome_usuario FROM usuarios where id_usuario = 18");
+                        $select = mysqli_query($conn, "SELECT nome_bairro FROM bairros where id_bairro = 27");
 
                         while ($row = mysqli_fetch_array($select)) {
                             echo '<input value="' . $row['nome_usuario'] . '">' . '</input>';
                         }
-                    ?>
+                    '>'?>  
                 </div>
 
                 <div class="form-group col-md-6">
                     <label>Rua</label>
                     <input class="form-control" name="rua_user" type="text" placeholder="Rua" required id="rua" size="60" 
 
-                    
+                    <?php 
+                       $select = mysqli_query($conn, "SELECT nome_rua FROM ruas where id_bairro = 12");
+
+                        while ($row = mysqli_fetch_array($select)) {
+                            echo '<input value="' . $row['nome_rua'] . '">' . '</input>';
+                        } 
+                    '>'?>  
                 </div>
             </div>
             <button type="submit" name="sbmt" class="btn btn-primary col-md-12">Atualizar</button>

@@ -1,5 +1,6 @@
 <?php
-    $visitante_visita = $_POST['visitanteVi'];
+    $visitante = $_POST['visitanteVi'];
+    $membro = $_POST['membroVi'];
     $data_visita = $_POST['dataVi'];
     $hora_visita = $_POST['horaVi'];
     $local_visita = $_POST['localVi'];

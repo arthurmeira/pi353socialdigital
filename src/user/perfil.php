@@ -14,7 +14,7 @@
     <?php
     //Chamando todos os arquivos necessários 
     include_once("../admin/connect.php");
-    $results = mysqli_query($conn, "SELECT * FROM usuarios where id_usuario = 18");
+    $results = mysqli_query($conn, "SELECT * FROM usuarios where id_usuario = $id_login");
     ?>
 
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">

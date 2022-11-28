@@ -9,21 +9,6 @@ $sql_estado = "INSERT INTO estados(
         VALUES(    
             '$estado_user'
             )";
-            
-/*
-        if ($conn->query($sql_estado) === TRUE) {
-            $query = $conn->query($sql_estado);
-            $id_estado = $query->insert_id;
-            echo "New record created successfully <br>";
-            echo $sql_estado;
-            
-        } else {
-            echo "Error: " . $sql_estado . "<br>" . $conn->error;
-        }
-        #mysqli_insert_id;
-        mysqli_close($conn);
-        */
-
 
 if ($conn->query($sql_estado) === TRUE) {
     echo "New record created successfully <br>";
@@ -31,8 +16,6 @@ if ($conn->query($sql_estado) === TRUE) {
 } else {
     echo "Error: " . $sql_estado . "<br>" . $conn->error;
 }
-
-$id_estado = mysqli_query($conn, "SELECT id_estado FROM estados");
 
 $fk_estado = $_POST['estado_user'];
 $fk_cidade = $_POST['cidade_user'];
@@ -81,16 +64,32 @@ if ($conn->query($sql_bairro) === TRUE) {
     echo "Error: " . $sql_bairro . "<br>" . $conn->error;
 }
 
-$fk_endereco = $_POST['rua_user'];
+$sql_rua = "INSERT INTO ruas(
+    nome_rua,
+    fk_bairro
+    ) 
+VALUES(    
+    '$rua_user',
+    '$fk_bairro'
+    )";
+
+if ($conn->query($sql_rua) === TRUE) {
+$query = $conn->query($sql_rua);
+$fk_rua = $conn->insert_id;
+echo "New record created successfully <br>";
+echo $sql_rua;
+
+} else {
+echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
 
 // Cadastro de Endereço
 $sql_endereco = "INSERT INTO endereco(
-            nome_rua,
-            fk_bairro
+            fk_rua
             ) 
         VALUES(    
-            '$rua_user',
-            '$fk_bairro'
+            '$fk_rua'
             )";
 
 if ($conn->query($sql_endereco) === TRUE) {
@@ -103,28 +102,33 @@ if ($conn->query($sql_endereco) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
+$fk_tipo = $_POST['tipo_usuario'];
+
 // Cadastro Usuário
 $sql = "INSERT INTO usuarios(
             nome_usuario, 
             cpf_usuario, 
             rg_usuario, 
-            email_usuario,  
+            email_usuario,
+            senha_user,  
             dtNasc_usuario, 
             dtCad_usuario,
-            fk_endereco
+            fk_endereco,
+            fk_tipo
             ) 
         VALUES(    
             '$name_user',
             '$cpf_user',
             '$rg_user',
             '$email_user',
+            '$senha_user',
             '$dtNasc_user',
             '$dtCad_user',
-            '$fk_endereco'
+            '$fk_endereco',
+            '$fk_tipo'
             )";
 
 if ($conn->query($sql) === TRUE) {
-    $id_endereco = $conn->insert_id;
     echo "New record created successfully <br>";
     echo $sql;
 } else {

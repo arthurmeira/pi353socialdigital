@@ -56,14 +56,14 @@
         <div class="form-row">
 
             <div class="form-group col-md-4">
-                <label for="inputEstado">Visitante</label>
+                <label for="inputEstado">Assistente social</label>
 
                 <select id="visitanteVi" name="visitanteVi" class="form-control">
                     <?php
                         include_once("../connect.php");
-                        $results = mysqli_query($conn, "SELECT * FROM usuarios");
+                        $results1 = mysqli_query($conn, "SELECT * FROM usuarios where fk_tipo = 2");
 
-                        while ($row = mysqli_fetch_array($results)) { 
+                        while ($row = mysqli_fetch_array($results1)) { 
                             echo '<option value="'.$row['id_visitas'].'">'.$row['nome_usuario'].'</option>';
                         }
                     ?>
@@ -72,19 +72,31 @@
             </div>
 
             <div class="form-group col-md-4">
+                <label for="inputEstado">Membro</label>
+
+                <select id="visitanteVi" name="membroVi" class="form-control">
+                    <?php
+                        include_once("../connect.php");
+                        $results2 = mysqli_query($conn, "SELECT * FROM usuarios where fk_tipo = 3");
+
+                        while ($row = mysqli_fetch_array($results2)) { 
+                            echo '<option value="'.$row['id_visitas'].'">'.$row['nome_usuario'].'</option>';
+                        }
+                    ?>
+                </select>
+
+            </div>
+
+            <div class="form-group col-md-2">
                 <label for="inputPassword4">Data</label>
                 <input class="form-control" type="date" name="dataVi" id="dataVi" required>
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-2">
                 <label for="inputPassword4">Hora</label>
                 <input class="form-control" type="time" name="horaVi" id="horaVi" required>
             </div>
         </div>
 
-        <div class="form-group col-md-12">
-            <label for="inputEmail4">Local (Endereço)</label>
-            <input type="text" class="form-control" name="localVi" id="localVi" placeholder="Local" required>
-        </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">

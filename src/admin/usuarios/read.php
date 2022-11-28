@@ -84,6 +84,7 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                         <th scope="col">Email</th>
                         <th scope="col">Nascimento</th>
                         <th scope="col">Cadastro</th>
+                        <th scope="col">Tipo</th>
                         <th scope="col">Ação</th>
                     </tr>
                 </thead>
@@ -97,6 +98,7 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                         $email_user = $row['email_usuario'];
                         $dtNasc_user = $row['dtNasc_usuario'];
                         $dtCad_user = $row['dtCad_usuario']; 
+                        $tipo_user = $row['fk_tipo'];
                     ?>
                     
                         <tr>
@@ -107,6 +109,7 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                             <td><?=$row['email_usuario']; ?></td>
                             <td><?=$row['dtNasc_usuario']; ?></td>
                             <td><?=$row['dtCad_usuario']; ?></td>
+                            <td><?=$row['fk_tipo']; ?></td>
 
                             <td>
                                 <a name="edit" href="screenEdit.php?id=<?= $row['id_usuario']; ?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>
@@ -117,8 +120,6 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                     <?php } ?>
                     
                 </tbody>
-            </table>
-
             </table>
 
         </div>

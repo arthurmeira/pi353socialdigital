@@ -51,16 +51,49 @@
 
     <br><br>
 
+    <?php
+        //GERADOR DE SENHA
+
+        function generatePassword($qtyCaraceters = 8)
+        {
+            //Letras minúsculas embaralhadas
+            $small = str_shuffle('abcdefghijklmnopqrstuvwxyz');
+        
+            //Letras maiúsculas embaralhadas
+            $upper = str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+        
+            //Números aleatórios
+            $numbers = (((date('Ymd') / 12) * 24) + mt_rand(800, 9999));
+            $numbers .= 1234567890;
+        
+            //Caracteres Especiais
+            $specialCharacters = str_shuffle('!@#$%*-');
+        
+            //Junta tudo
+            $characters = $upper.$small.$numbers.$specialCharacters;
+        
+            //Embaralha e pega apenas a quantidade de caracteres informada no parâmetro
+            $password = substr(str_shuffle($characters), 0, $qtyCaraceters);
+        
+            //Retorna a senha
+            return $password;
+        }
+    ?>
+
     <form method="POST" action="/pi353socialdigital/src/admin/usuarios/create.php" style="width: 60%; margin: auto;">
             
         <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-5">
                 <label for="inputEmail4">Nome</label>
                 <input class="form-control" type="text" name="nome_user" id="userName" placeholder="Nome" required>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-5">
                 <label for="inputPassword4">Email</label>
                   <input class="form-control" name="email_user" id="userEmail" placeholder="Email" required>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputPassword4">Senha</label>
+                  <input value="<?=generatePassword(8);?>" maxlength="8" class="form-control" name="senha_user" id="userEmail" placeholder="Senha" required>
             </div>
         </div>
 
@@ -69,12 +102,11 @@
                 <label for="tipo_usuario">Tipo de Usuário</label>
                 <select id="tipo_usuario" name="tipo_usuario" class="form-control">
                     <?php
-                    include_once("../connect.php");
-                    $results = mysqli_query($conn, "SELECT * FROM tipo_usuario");
-
-                    while ($row = mysqli_fetch_array($results)) {
-                        echo '<option value="' . $row['id_tipo'] . '">' . $row['nome_tipo'] . '</option>';
-                    }
+                        include_once("../connect.php");
+                        $results = mysqli_query($conn, "SELECT * FROM tipo_usuario");
+                        while ($row = mysqli_fetch_array($results)) {
+                            echo '<option value="' . $row['id_tipo'] . '">' . $row['nome_tipo'] . '</option>';
+                        }
                     ?>
                 </select>
             </div>
@@ -96,6 +128,7 @@
                     <input class="form-control" type="date" name="dtCad_user" id="userDtCad" value="<?=date('d/m/Y');?>" required>
                 </div>
         </div>
+
 
         
         <form method="get" action=".">
