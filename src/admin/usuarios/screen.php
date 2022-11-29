@@ -174,7 +174,7 @@
             </div>
             <button type="submit" name="sbmt" class="btn btn-primary col-md-12">Cadastrar</button>
         </form>
-    </form>
+    </form >
 
     <br><br>
 

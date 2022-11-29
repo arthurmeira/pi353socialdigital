@@ -65,26 +65,12 @@
     </div>
 
     <?php
-    include_once('connect.php');
+    include_once('../connect.php');
     $id = $_GET['id'];
-    $del = $_POST['del'];
 
-    $sql = "DELETE FROM usuarios WHERE id_usuario = $id";
+    $sql = "DELETE FROM visitas WHERE id_visitas = $id";
 
-/*
-    if (isset($del)) {
-        if ($conn->query($sql) === TRUE) {
-            echo "Delete successfully <br>";
-            echo $sql;
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-
-        mysqli_close($conn);
-    }
-    ?>
-*/
-        if ($conn->query($sql) === TRUE) {
+    if ($conn->query($sql) === TRUE) {
             echo "Delete successfully <br>";
             echo $sql;
         } else {

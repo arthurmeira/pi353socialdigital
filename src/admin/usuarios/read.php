@@ -113,7 +113,7 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
 
                             <td>
                                 <a name="edit" href="screenEdit.php?id=<?= $row['id_usuario']; ?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>
-                                <a name="del" href="view.php?id=<?= $row['id_usuario']; ?>"  class="view_btn"><img src="/pi353socialdigital/IMAGES/impressao.png" alt="view"></a>
+                                <a name="del" href="imprimir.php?id=<?= $row['id_usuario']; ?>"  class="view_btn"><img src="/pi353socialdigital/IMAGES/impressao.png" alt="view"></a>
                                 <a name="del" href="delete.php?id=<?= $row['id_usuario']; ?>"  class="del_btn"><img src="/pi353socialdigital/IMAGES/lixo.png" alt="trash"></a>
                             </td>
                         </tr>

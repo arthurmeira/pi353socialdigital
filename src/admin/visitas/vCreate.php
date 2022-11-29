@@ -5,23 +5,20 @@ include_once('vvar.php');
 $visitante = $_POST['visitanteVi'];
 $membro = $_POST['membroVi'];
 
+
 $sql_visitas = "INSERT INTO visitas(
             local_visita,
             data_visita, 
             hora_visita, 
             observacao_visita, 
-            descricao_visita,
-            fk_visitante,
-            fk_membro
+            descricao_visita
             ) 
         VALUES(    
             '$local_visita',
             '$data_visita',
             '$hora_visita',
             '$observacao_visita',
-            '$descricao_visita',
-            '$visitante',
-            '$membro'
+            '$descricao_visita'
             )";
 
 if ($conn->query($sql_visitas) === TRUE) {

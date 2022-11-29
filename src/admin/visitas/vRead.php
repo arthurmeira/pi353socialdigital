@@ -77,7 +77,8 @@
                 <thead class="thead-Primary">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Visitante</th>
+                        <th scope="col">Asisstente</th>
+                        <th scope="col">Membro</th>
                         <th scope="col">Local</th>
                         <th scope="col">Data</th>
                         <th scope="col">Hora</th>
@@ -88,18 +89,23 @@
                     <?php
                         while ($row = mysqli_fetch_array($results)) { 
                             $id_visita = $row['id_visitas'];
+                            $assistente = $row['fk_usuario'];
+                            $membro = $row['fk_usuario'];
                             $local_visita = $row['local_visita'];
                             $data_visita = $row['data_visita'];
                             $hora_visita = $row['hora_visita'];
                     ?>
                         <tr>
                             <td><?=$id_visita?></td>
+                            <td><?=$assistente?></td>
+                            <td><?=$membro?></td>
                             <td><?=$local_visita?></td>
                             <td><?=$data_visita?></td>
                             <td><?=$hora_visita?></td>
 
                             <td>
                                 <a name="edit" href="vScreenEdit.php?id=<?= $id_visita ?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>
+                                <a name="del" href="view.php?id=<?= $id_visita ?>"  class="view_btn"><img src="/pi353socialdigital/IMAGES/impressao.png" alt="view"></a>
                                 <a name="del" href="vDelete.php?id=<?= $id_visita ?>"  class="del_btn"><img src="/pi353socialdigital/IMAGES/lixo.png" alt="trash"></a>
                             </td>
                         </tr>
