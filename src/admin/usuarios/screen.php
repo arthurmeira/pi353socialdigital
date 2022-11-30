@@ -96,7 +96,7 @@
                   <input value="<?=generatePassword(8);?>" maxlength="8" class="form-control" name="senha_user" id="userEmail" placeholder="Senha" required>
             </div>
         </div>
-
+        
         <div class="form-row">
             <div class="form-group col-md-2">
                 <label for="tipo_usuario">Tipo de Usuário</label>

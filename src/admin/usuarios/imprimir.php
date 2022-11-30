@@ -10,46 +10,36 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Social Digital</a>
-
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Usuários
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/screen.php">Novo usuário</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Tabela de usuários</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Relatório de usuário</a>
-                    </div>
-
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Visitas
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vScreen.php">Nova visita</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Tabela de visitas</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Relatório de visita</a>
-                    </div>
-
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Contato
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Mensagens</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
 
     <br><br>
+
+    <?php
+        include_once('../connect.php');
+
+        $usuario_selecionado = $_GET['id'];
+
+        $sql = mysqli_query($conn, "SELECT * FROM usuarios WHERE id_usuario = $usuario_selecionado");
+        $row = mysqli_fetch_array($sql);
+    ?>
+
+    <div class="container">
+        <div style="display:flex; align-items:center; justify-content:space-between">
+            <h2>Relatório</h2>
+            <a href="read.php" style="margin-bottom: 10px;" class="btn btn-outline-primary">Voltar</a>
+        </div>
+        <div class="card" style="padding: 20px; display:flex;">
+            <h4>
+                <div>Nome: <?=$row['nome_usuario']?></div><hr>
+                <div>E-mail: <?=$row['email_usuario']?></div><hr>
+                <div>CPF: <?=$row['cpf_usuario']?></div><hr>
+                <div>RG: <?=$row['rg_usuario']?></div><hr>
+                <div>Cadastro: <?=$row['dtCad_usuario']?></div><hr>
+                <div>Nascimento: <?=$row['dtNasc_usuario']?></div><hr>
+                <div>Tipo: <?=$row['fk_tipo']?></div><hr>
+            </h4>
+            <a style="margin: 10px; color:white;" onclick="window.print()" class="btn btn-primary">Imprimir</a>
+        </div>
+    </div>
 
     
 

@@ -63,12 +63,12 @@
         <div class="card">
             <div class="d-flex justify-content-between d-flex align-items-center" style="padding: 10px;">
                 <div>
-                    <form action="search.php" method="post" class="d-flex justify-content-around d-flex align-items-center">
+                    <form action="vsearch.php" method="post" class="d-flex justify-content-around d-flex align-items-center">
                         <input class= "form-control mr-sm-2" type="search" placeholder="Pesquisar" name="buscar" id="buscar" required>
                         <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="sbmt" id="sbmt" value="Buscar">
                     </form>
                 </div>
-                <form method="post" action="search.php">
+                <form method="post" action="vsearch.php">
                     <a class="btn btn-success " style="font-size: 16px; font-weight:500;" href="/pi353socialdigital/src/admin/visitas/vscreen.php">NOVO</a>
                 </form>
             </div>
@@ -89,12 +89,12 @@
                     <?php
                         while ($row = mysqli_fetch_array($results)) { 
                             $id_visita = $row['id_visitas'];
-                            $assistente = $row['fk_usuario'];
-                            $membro = $row['fk_usuario'];
+                            $assistente = $row['fk_assistente'];
+                            $membro = $row['fk_membro'];
                             $local_visita = $row['local_visita'];
                             $data_visita = $row['data_visita'];
                             $hora_visita = $row['hora_visita'];
-                    ?>
+                        ?>
                         <tr>
                             <td><?=$id_visita?></td>
                             <td><?=$assistente?></td>
@@ -114,15 +114,10 @@
                 </tbody>
             </table>
 
-            </table>
-
         </div>
         <!--card-->
     </div>
     <!--container-->
-
-    <form>
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

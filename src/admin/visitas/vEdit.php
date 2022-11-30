@@ -1,17 +1,18 @@
 <?php
-    include_once('connect.php');
-    include_once('var.php');
-    $id_user = $_POST['id_visita'];
+    include_once('../connect.php');
+    include_once('vvar.php');
 
-$sql = "UPDATE usuarios SET 
-            nome_usuario ='$name_user',
-            cpf_usuario = '$cpf_user',
-            rg_usuario = '$rg_user',
-            email_usuario = '$email_user', 
-            celular_usuario = '$celular_user', 
-            dtNasc_usuario = '$dtNasc_user', 
-            dtCad_usuario = '$dtCad_user'
-        WHERE id_usuario = $id_user; ";
+    $visita_selecionado = $_GET['id'];
+    //$id_visita = $_POST['id_usuario'];
+
+$sql = "UPDATE visitas SET 
+            fk_assistente ='$visitante',
+            fk_membro = '$membro',
+            data_visita = '$data_visita',
+            hora_visita = '$hora_visita',
+            observacao_visita = '$observacao_visita', 
+            descricao_visita = '$descricao_visita'
+        WHERE id_visita = $visita_selecionada; ";
 
     if ($conn->query($sql) === TRUE) {
         echo "Uptdate successfully <br>";
@@ -22,6 +23,7 @@ $sql = "UPDATE usuarios SET
     }
 
     mysqli_close($conn);
+
 
 ?>  
 
@@ -34,6 +36,6 @@ $sql = "UPDATE usuarios SET
     <title>Social Digital - Editar</title>
 </head>
 <body>
-    <a href="/pi353socialdigital/src/admin/read.php">Ver registros</a>
+    <a href="/pi353socialdigital/src/admin/visitas/vRead.php">Ver registros</a>
 </body>
 </html>
