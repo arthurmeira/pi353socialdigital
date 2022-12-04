@@ -1,3 +1,13 @@
+<?php
+    //Chamando todos os arquivos necessários 
+    include_once("../admin/connect.php");
+    include_once("sessao.php");
+
+    $id = $_GET['id'];   
+
+    $results = mysqli_query($conn, "SELECT * FROM usuarios where id_usuario = $id");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,71 +21,54 @@
 
 <body>
 
+    
+
     <?php
-    //Chamando todos os arquivos necessários 
-    include_once("../admin/connect.php");
-    $results = mysqli_query($conn, "SELECT * FROM usuarios where id_usuario = $id_login");
+        include_once("userHeader.php");
     ?>
-
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Social Digital</a>
-
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link " href="/pi353socialdigital/src/user/home.php">Home</a>
-                </li>
-                <li>
-                    <a class="nav-link " href="/pi353socialdigital/src/user/avaliacao.php">Avaliação</a>
-                </li>
-                <li>
-                    <a class="nav-link active" href="/pi353socialdigital/src/user/perfil.php">Perfil</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <br><br>
 
     <div class="container">
 
+    <div class="navbar navbar-expand-lg navbar navbar-dark bg-primary" style="color:white; display:flex; align-items:center; justify-content:space-between">
+            <h2>Usuário</h2>
+    </div>
 
-
-        <table class="table table-striped">
-            <thead class="thead-Primary">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">CPF</th>
-                    <th scope="col">RG</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Nascimento</th>
-                    <th scope="col">Cadastro</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                while ($row = mysqli_fetch_array($results)) {
-                    $id_usuario = $row['id_usuario'];
-                    $name_user = $row['nome_usuario'];
-                    $cpf_user = $row['cpf_usuario'];
-                    $rg_user = $row['rg_usuario'];
-                    $email_user = $row['email_usuario'];
-                    $dtNasc_user = $row['dtNasc_usuario'];
-                    $dtCad_user = $row['dtCad_usuario'];
-                ?>
-
+    <table class="table table-striped">
+                <thead class="thead-Primary">
                     <tr>
-                        <td><?= $row['id_usuario']; ?></td>
-                        <td><?= $row['nome_usuario']; ?></td>
-                        <td><?= $row['cpf_usuario']; ?></td>
-                        <td><?= $row['rg_usuario']; ?></td>
-                        <td><?= $row['email_usuario']; ?></td>
-                        <td><?= $row['dtNasc_usuario']; ?></td>
-                        <td><?= $row['dtCad_usuario']; ?></td>
-
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">RG</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Nascimento</th>
+                        <th scope="col">Cadastro</th>
                     </tr>
-                <?php } ?>
+                </thead>
+                <tbody>
+                    <?php
+                    while ($row = mysqli_fetch_array($results)) { 
+                        $id_usuario = $row['id_usuario'];
+                        $name_user = $row['nome_usuario'];
+                        $cpf_user = $row['cpf_usuario'];
+                        $rg_user = $row['rg_usuario'];
+                        $email_user = $row['email_usuario'];
+                        $dtNasc_user = DateTime::createFromFormat("Y-m-d", $row['dtNasc_usuario']);
+                        $dtCad_user = DateTime::createFromFormat("Y-m-d", $row['dtCad_usuario']); 
+                    ?>
+
+                        <tr>
+                            <td><?=$row['id_usuario'];?></td>
+                            <td><?=$row['nome_usuario']; ?></td>
+                            <td><?=$row['cpf_usuario']; ?></td>
+                            <td><?=$row['rg_usuario']; ?></td>
+                            <td><?=$row['email_usuario']; ?></td>
+                            <td><?=$dtNasc_user->format("d/m/Y"); ?></td>
+                            <td><?=$dtCad_user->format("d/m/Y");?> </td>
+                    <?php } ?>
+                    
+                </tbody>
+            </table>
 
             </tbody>
         </table>

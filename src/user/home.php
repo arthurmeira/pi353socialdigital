@@ -1,3 +1,9 @@
+<?php
+    include_once('sessao.php');
+
+    $id = $_GET['id'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,24 +17,9 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Social Digital</a>
-
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link active " href="/pi353socialdigital/src/user/home.php">Home</a>
-                </li>
-                <li>
-                    <a class="nav-link " href="/pi353socialdigital/src/user/avaliacao.php">Avaliação</a>
-                </li>
-                <li>
-                    <a class="nav-link " href="/pi353socialdigital/src/user/perfil.php">Perfil</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <br><br>
+    <?php
+        include_once("userHeader.php");
+    ?>
 
 
     <div class="container" style="text-align: justify;">
@@ -39,20 +30,53 @@
 
 
         <div class="card navbar navbar-expand-lg navbar navbar-dark bg-primary" style="color: white;">
-            <p>Usando cor para adicionar significado só fornece uma indicação visual, a qual não será transmitida para usuários de tecnologias assistivas (como leitores de telas). Se assegure que a informação denotada pela cor é tanto destacada do conteúdo (ex: o texto visível) ou está incluída em meios alternativos, como textos extras escondidos com a classe .sr-class.</p>
+            <p>
+                Devido ao grande aumento da pobreza no Brasil e que vem crescendo
+                gradativamente a cada ano, deve-se observar que o trabalho em acolher e proporcionar apoio
+                para o maior número de famílias e indivíduos necessitados é um dever de organizações
+                governamentais, mas que pode ser idealizado e realizado também com a criação de
+                organizações não governamentais (ONG) privadas para que seja possível atender a população
+                de modo geral e imediata.
+            </p>
         </div>
 
         <br>
 
         <div>
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae diam pretium, tempor sapien vitae, dignissim lorem. Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae diam pretium, tempor sapien vitae, dignissim lorem. Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae diam pretium, tempor sapien vitae, dignissim lorem. Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.</p>
-            <p>Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae diam pretium, tempor sapien vitae, dignissim lorem. Nam eu est et lectus venenatis malesuada. Vestibulum pulvinar vulputate est et gravida. Fusce vel facilisis tellus. Sed rhoncus laoreet tortor euismod pulvinar.</p>
+            <p> 
+                No Brasil, o serviço de assistência social é provido em maior escala por
+                organizações governamentais, que atuam em todo território nacional, porém, por ser um projeto
+                de apoio de larga escala, e que necessita de um acompanhamento constante, acaba se
+                tornando uma tarefa dificultosa e com grandes problemas visíveis, como a má gestão
+                e demora no atendimento do serviço prestado. Isso acaba gerando instabilidades e
+                diferenças para cada região, por existirem mais ou menos projetos e metodologias realizadas
+                pelo governo de cada estado.
+            </p>
+            <p>
+                A tecnologia evoluiu a ponto de ser possível a criação de softwares, sistemas de
+                controles, geração de relatórios, painéis de gestão entre vários outros métodos de
+                desenvolvimento tecnológicos que possibilitam uma melhora no gerenciamento dos serviços
+                prestados por uma empresa.
+            </p>
         </div>
 
         <br>
 
         <div class="card navbar navbar-expand-lg navbar navbar-dark bg-primary" style="color: white;">
-            <p>Usando cor para adicionar significado só fornece uma indicação visual, a qual não será transmitida para usuários de tecnologias assistivas (como leitores de telas). Se assegure que a informação denotada pela cor é tanto destacada do conteúdo (ex: o texto visível) ou está incluída em meios alternativos, como textos extras escondidos com a classe .sr-class. Usando cor para adicionar significado só fornece uma indicação visual, a qual não será transmitida para usuários de tecnologias assistivas (como leitores de telas). Se assegure que a informação denotada pela cor é tanto destacada do conteúdo (ex: o texto visível) ou está incluída em meios alternativos, como textos extras escondidos com a classe .sr-class.</p>
+            <p>
+                Uma assistência social pode ser automatizada com o desenvolvimento de um
+                software de controle, visando um melhor serviço de entrega para as famílias e indivíduos que
+                fazem parte do projeto colaborativo.
+            </p>
+        </div>
+
+        <br>
+        
+        <div>
+            <p>
+                A Social Digital é uma aplicação web destinada ao assistente social, para que consiga agilizar
+                seu trabalho.
+            </p>
         </div>
 
 

@@ -1,3 +1,7 @@
+<?php
+    //include_once('/xampp/htdocs/pi353socialdigital/src/user/sessao.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,52 +10,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Social Digital - Admin</title>
+    <title>Social Digital</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Social Digital</a>
-
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Usuários
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/screen.php">Novo usuário</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Tabela de usuários</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Relatório de usuário</a>
-                    </div>
-
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Visitas
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vScreen.php">Nova visita</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Tabela de visitas</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Relatório de visita</a>
-                    </div>
-
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Contato
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Mensagens</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <br><br>
-
     <?php
+        include_once('../header.php');
         include_once("../connect.php");
 
         $visita_selecionada = $_GET['id'];
@@ -60,36 +24,43 @@
         $row = mysqli_fetch_array($select);
     ?>
 
-    <form method="POST" action="/pi353socialdigital/src/admin/visitas/vedit.php" style="width: 60%; margin: auto;">
+    <form method="POST"  style="width: 60%; margin: auto;">
+
+        <div style="display:flex; align-items:center; justify-content:space-between">
+            <h2>Editar usuário</h2>
+            <a href="vread.php" style="margin-bottom: 10px;" class="btn btn-outline-primary">Voltar</a>
+        </div>
+        <hr>
 
         <div class="form-row">
 
+            <?php
+                $assistente = $row['fk_assistente'];
+                $membro = $row['fk_membro'];
+
+                $results_assistente = mysqli_query($conn, "SELECT nome_usuario FROM usuarios WHERE id_usuario = $assistente");
+                $row_assistente     = mysqli_fetch_array($results_assistente);
+
+                $results_membro = mysqli_query($conn, "SELECT nome_usuario FROM usuarios WHERE id_usuario = $membro");
+                $row_membro     = mysqli_fetch_array($results_membro);
+            ?>  
+
             <div class="form-group col-md-4">
                 <label for="inputEstado">Assistente social</label>
-
-                <select id="visitanteVi" name="visitanteVi" class="form-control">
-                    <?php
-                        include_once("../connect.php");
-                        $results1 = mysqli_query($conn, "SELECT * FROM usuarios where fk_tipo = $visita_selecionada");
-
-                        echo '<option value="'.$row['id_visitas'].'">'.$row['nome_usuario'].'</option>';
-                    ?>
-                </select>
-
+                <input class="form-control" disabled="" type="text" value="<?=$row_assistente['nome_usuario']?>"/>
             </div>
 
             <div class="form-group col-md-4">
                 <label for="inputEstado">Membro</label>
-
-                <select id="visitanteVi" name="membroVi" class="form-control">
-                    <?php
-                        include_once("../connect.php");
-                        $results2 = mysqli_query($conn, "SELECT * FROM usuarios where fk_tipo = $visita_selecionada");
-
-                        echo '<option value="'.$row['id_visitas'].'">'.$row['nome_usuario'].'</option>';
-                    ?>
-                </select>
+                <input class="form-control" disabled="" type="text" value="<?=$row_membro['nome_usuario']?>"/>
             </div>
+
+            <?php
+                $visita_selecionada = $_GET['id'];
+
+                $select = mysqli_query($conn, "SELECT * FROM visitas where id_visitas = $visita_selecionada");
+                $row = mysqli_fetch_array($select); 
+            ?>
 
             <div class="form-group col-md-2">
                 <label for="inputPassword4">Data</label>
@@ -105,25 +76,53 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputAddress">Observações</label>
-                <textarea class="form-control" name="obsVi" id="obsVi" cols="30" rows="10" required>
-                <?=$row['observacao_visita']?>
-                </textarea>
+                <textarea class="form-control" name="obsVi" id="obsVi" cols="30" rows="6" required><?=$row['observacao_visita']?></textarea>
             </div>
             <div class="form-group col-md-6">
                 <label for="inputAddress">Descrição</label>
-                <textarea class="form-control" name="descVi" id="descVi" cols="30" rows="10" required>
-                <?=$row['descricao_visita']?>
-                </textarea>
+                <textarea class="form-control" name="descVi" id="descVi" cols="30" rows="6" required><?=$row['descricao_visita']?></textarea>
             </div>
         </div>
 
+        <form method="get" action=".">
         
-        <button type="submit" name="sbmt" class="btn btn-primary col-md-12">Atualizar</button>
+        <div class="form-row">
+        
+            <div class="form-group col-md-3">
+                <label>CEP</label>
+                <input value="<?=$row['cep_visita']?>" placeholder="CEP" class="form-control" name="cep" type="text" id="cep" value="" size="10" maxlength="9" onchange="pesquisacep(this.value);" />
+            </div>
 
+                <div class="form-group col-md-1">
+                    <label>Estado</label>
+                    <input value="<?=$row['estado_visita']?>" class="form-control" name="estado" placeholder="UF" required id="uf" size="2" />    
+                </div>
+                
+                <div class="form-group col-md-8">
+                    <label>Cidade</label>
+                    <input value="<?=$row['cidade_visita']?>" class="form-control" name="cidade" id="cidade" placeholder="Cidade" required id="cidade" size="40" />
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Bairro</label>
+                    <input value="<?=$row['bairro_visita']?>" class="form-control" name="bairro" type="text" placeholder="Bairro" required id="bairro" size="40" />
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Rua</label>
+                    <input value="<?=$row['rua_visita']?>" class="form-control" name="rua" type="text" placeholder="Rua" required id="rua" size="60" />
+                </div>
+            </div>
+            <button type="submit" name="sbmt" class="btn btn-primary col-md-12">Atualizar</button>
+        </form>
     </form>
 
-
-    <br><br>
+    <?php
+            if(isset($_POST['sbmt'])){
+                include_once('vedit.php');
+                echo "<script>alert('Usuário alterado!!')</script>";
+            }   
+    ?>
 
     <!-- Adicionando Javascript -->
     <script>
@@ -197,14 +196,12 @@
     </script>
 
 
-
     <!-- Inicio do formulario -->
     <form method="get" action=".">
         <input name="ibge" type="hidden" id="ibge" size="8" /></label><br />
     </form>
-</body>
 
-
+    
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

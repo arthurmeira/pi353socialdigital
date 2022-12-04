@@ -1,7 +1,9 @@
 <?php
-//Chamando todos os arquivos necessários 
-include_once("../connect.php");
-$results = mysqli_query($conn, "SELECT * FROM usuarios");
+    include_once('/xampp/htdocs/pi353socialdigital/src/user/sessao.php');
+    //Chamando todos os arquivos necessários 
+    include_once("../connect.php");
+    $results = mysqli_query($conn, "SELECT * FROM usuarios");
+    //$id = $_GET['id'];
 ?>
 
 <!DOCTYPE html>
@@ -17,50 +19,16 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Social Digital</a>
-
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Usuários
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/screen.php">Novo usuário</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Tabela de usuários</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Relatório de usuário</a>
-                    </div>
-
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Visitas
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vScreen.php">Nova visita</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Tabela de visitas</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Relatório de visita</a>
-                    </div>
-
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Contato
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Mensagens</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <br><br>
-
-
-
+    <?php
+        include_once('../header.php');
+    ?>
+    
     <div class="container">
+        
+        <div style="display:flex; color:white; align-items:center; justify-content:space-between" class="navbar navbar-expand-lg navbar navbar-dark bg-primary"">
+            <h3>Tabela de usuários</h3>
+        </div>
+
         <div class="card">
             <div class="d-flex justify-content-between d-flex align-items-center" style="padding: 10px;">
                 <div>
@@ -70,7 +38,7 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                     </form>
                 </div>
                 <form method="post" action="search.php">
-                    <a class="btn btn-success " style="font-size: 16px; font-weight:500;" href="/pi353socialdigital/src/admin/usuarios/screen.php">NOVO</a>
+                    <a class="btn btn-success " style="font-size: 16px; font-weight:500;" href="/pi353socialdigital/src/admin/usuarios/screen.php">NOVO USUÁRIO</a>
                 </form>
             </div>
 
@@ -96,25 +64,25 @@ $results = mysqli_query($conn, "SELECT * FROM usuarios");
                         $cpf_user = $row['cpf_usuario'];
                         $rg_user = $row['rg_usuario'];
                         $email_user = $row['email_usuario'];
-                        $dtNasc_user = $row['dtNasc_usuario'];
-                        $dtCad_user = $row['dtCad_usuario']; 
+                        $dtNasc_user = DateTime::createFromFormat("Y-m-d", $row['dtNasc_usuario']);
+                        $dtCad_user = DateTime::createFromFormat("Y-m-d", $row['dtCad_usuario']); 
                         $tipo_user = $row['fk_tipo'];
                     ?>
-                    
+
                         <tr>
                             <td><?=$row['id_usuario'];?></td>
                             <td><?=$row['nome_usuario']; ?></td>
                             <td><?=$row['cpf_usuario']; ?></td>
                             <td><?=$row['rg_usuario']; ?></td>
                             <td><?=$row['email_usuario']; ?></td>
-                            <td><?=$row['dtNasc_usuario']; ?></td>
-                            <td><?=$row['dtCad_usuario']; ?></td>
+                            <td><?=$dtNasc_user->format("d/m/Y"); ?></td>
+                            <td><?=$dtCad_user->format("d/m/Y");?> </td>
                             <td><?=$row['fk_tipo']; ?></td>
 
                             <td>
-                                <a name="edit" href="screenEdit.php?id=<?= $row['id_usuario']; ?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>
-                                <a name="del" href="imprimir.php?id=<?= $row['id_usuario']; ?>"  class="view_btn"><img src="/pi353socialdigital/IMAGES/impressao.png" alt="view"></a>
-                                <a name="del" href="delete.php?id=<?= $row['id_usuario']; ?>"  class="del_btn"><img src="/pi353socialdigital/IMAGES/lixo.png" alt="trash"></a>
+                                <a name="edit" href="screenEdit.php?id=<?=$row['id_usuario']?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>
+                                <a name="del" href="imprimir.php?id=<?=$row['id_usuario']?>" class="view_btn"><img src="/pi353socialdigital/IMAGES/impressao.png" alt="view"></a>
+                                <a name="del" href="delete.php?id=<?=$row['id_usuario']?>" class="del_btn"><img src="/pi353socialdigital/IMAGES/lixo.png" alt="trash"></a>
                             </td>
                         </tr>
                     <?php } ?>

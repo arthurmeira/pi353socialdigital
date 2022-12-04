@@ -1,4 +1,9 @@
-  <!DOCTYPE html>
+<?php
+    //include_once('/xampp/htdocs/pi353socialdigital/src/user/sessao.php');
+    //$id = $_GET['id'];
+?>
+
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -6,63 +11,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Social Digital - Admin</title>
+    <title>Social Digital</title>
 </head>
-<?php
-    include_once('../connect.php');
 
-    $buscar = $_POST['buscar'];
-    $submit = $_POST['sbmt'];
-
-    if (isset($submit)) {
-        $results = mysqli_query($conn, "SELECT * FROM usuarios WHERE (id_usuario = $buscar) or (nome_usuario = '%$buscar%') or (cpf_usuario = $buscar) or (dtCad_usuario = '%$buscar%')");
-    } else if (empty($sql_busca)){
-        echo "Nenhum registro encontrado.";
-    }
-    
-    ?>
 <body>
     
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Social Digital</a>
+    <?php
+        include_once('../header.php');
+        include_once('../connect.php');
 
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Usuários
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/screen.php">Novo usuário</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Tabela de usuários</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Relatório de usuário</a>
-                    </div>
+        $buscar = $_POST['buscar'];
+        $submit = $_POST['sbmt'];
 
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Visitas
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vScreen.php">Nova visita</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Tabela de visitas</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Relatório de visita</a>
-                    </div>
-
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Contato
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Mensagens</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <br><br>
+        if (isset($submit)) {
+            if (is_numeric($buscar)){
+                $where = "(id_usuario = $buscar) OR (cpf_usuario = $buscar) OR (rg_usuario = $buscar)";
+            }else{
+                $where = "(nome_usuario LIKE '%$buscar%') or (dtCad_usuario = '$buscar') or (dtNasc_usuario LIKE '%$buscar%') or (email_usuario = '$buscar')";
+            }
+            $results = mysqli_query($conn, "SELECT * FROM usuarios WHERE  $where");
+        }
+    ?>
 
     <div class="container">
         <div class="card">
@@ -89,8 +58,8 @@
                         $cpf_user = $row['cpf_usuario'];
                         $rg_user = $row['rg_usuario'];
                         $email_user = $row['email_usuario'];
-                        $dtNasc_user = $row['dtNasc_usuario'];
-                        $dtCad_user = $row['dtCad_usuario']; 
+                        $dtNasc_user = DateTime::createFromFormat("Y-m-d", $row['dtNasc_usuario']);
+                        $dtCad_user = DateTime::createFromFormat("Y-m-d", $row['dtCad_usuario']);  
                         $tipo_user = $row['fk_tipo'];
                     ?>
                     
@@ -100,14 +69,14 @@
                             <td><?=$row['cpf_usuario']; ?></td>
                             <td><?=$row['rg_usuario']; ?></td>
                             <td><?=$row['email_usuario']; ?></td>
-                            <td><?=$row['dtNasc_usuario']; ?></td>
-                            <td><?=$row['dtCad_usuario']; ?></td>
+                            <td><?=$dtNasc_user->format("d/m/Y"); ?></td>
+                            <td><?=$dtCad_user->format("d/m/Y");?> </td>
                             <td><?=$row['fk_tipo']; ?></td>
 
                             <td>
-                                <a name="edit" href="screenEdit.php?id=<?= $row['id_usuario']; ?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>
-                                <a name="del" href="view.php?id=<?= $row['id_usuario']; ?>"  class="view_btn"><img src="/pi353socialdigital/IMAGES/impressao.png" alt="view"></a>
-                                <a name="del" href="delete.php?id=<?= $row['id_usuario']; ?>"  class="del_btn"><img src="/pi353socialdigital/IMAGES/lixo.png" alt="trash"></a>
+                                <a name="edit" href="screenEdit.php?id=<?=$row['id_usuario']?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>
+                                <a name="del" href="imprimir.php?id=<?=$row['id_usuario']?>" class="view_btn"><img src="/pi353socialdigital/IMAGES/impressao.png" alt="view"></a>
+                                <a name="del" href="delete.php?id=<?=$row['id_usuario']?>" class="del_btn"><img src="/pi353socialdigital/IMAGES/lixo.png" alt="trash"></a>
                             </td>
                         </tr>
                     <?php } ?>

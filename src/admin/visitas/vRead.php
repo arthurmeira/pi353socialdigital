@@ -2,7 +2,7 @@
     //Chamando todos os arquivos necessários 
     include_once("../connect.php");
     $results = mysqli_query($conn, "SELECT * FROM visitas");
-    
+    //include_once('/xampp/htdocs/pi353socialdigital/src/user/sessao.php');
 ?>
 
 <!DOCTYPE html>
@@ -18,48 +18,16 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Social Digital</a>
-
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Usuários
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/screen.php">Novo usuário</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Tabela de usuários</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Relatório de usuário</a>
-                    </div>
-
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Visitas
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vScreen.php">Nova visita</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Tabela de visitas</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Relatório de visita</a>
-                    </div>
-
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Contato
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Mensagens</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <br><br>
+    <?php
+        include_once('../header.php');
+    ?>
 
     <div class="container">
+
+        <div style="display:flex; color:white; align-items:center; justify-content:space-between" class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+            <h3>Tabela de visitas</h3>
+        </div>
+
         <div class="card">
             <div class="d-flex justify-content-between d-flex align-items-center" style="padding: 10px;">
                 <div>
@@ -69,7 +37,7 @@
                     </form>
                 </div>
                 <form method="post" action="vsearch.php">
-                    <a class="btn btn-success " style="font-size: 16px; font-weight:500;" href="/pi353socialdigital/src/admin/visitas/vscreen.php">NOVO</a>
+                    <a class="btn btn-success " style="font-size: 16px; font-weight:500;" href="/pi353socialdigital/src/admin/visitas/vscreen.php">NOVA VISITA</a>
                 </form>
             </div>
 
@@ -79,7 +47,9 @@
                         <th scope="col">ID</th>
                         <th scope="col">Asisstente</th>
                         <th scope="col">Membro</th>
-                        <th scope="col">Local</th>
+                        <th scope="col">CEP</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Cidade</th>
                         <th scope="col">Data</th>
                         <th scope="col">Hora</th>
                         <th scope="col">Ação</th>
@@ -87,29 +57,41 @@
                 </thead>
                 <tbody>
                     <?php
-                        while ($row = mysqli_fetch_array($results)) { 
+                        while ($row = mysqli_fetch_array($results)) {                             
                             $id_visita = $row['id_visitas'];
                             $assistente = $row['fk_assistente'];
                             $membro = $row['fk_membro'];
-                            $local_visita = $row['local_visita'];
-                            $data_visita = $row['data_visita'];
-                            $hora_visita = $row['hora_visita'];
+                            $cep = $row['cep_visita'];
+                            $estado = $row['estado_visita'];
+                            $cidade = $row['cidade_visita'];
+                            $data_visita = DateTime::createFromFormat("Y-m-d", $row['data_visita']);
+                            $hora_visita = DateTime::createFromFormat("H:i:s",$row['hora_visita']);
+
+                            // Retorna dados da chave estrangeira
+                            $results_assistente = mysqli_query($conn, "SELECT nome_usuario FROM usuarios WHERE id_usuario = $assistente");
+                            $row_assistente     = mysqli_fetch_array($results_assistente);
+
+                            $results_membro = mysqli_query($conn, "SELECT nome_usuario FROM usuarios WHERE id_usuario = $membro");
+                            $row_membro     = mysqli_fetch_array($results_membro);
                         ?>
                         <tr>
-                            <td><?=$id_visita?></td>
-                            <td><?=$assistente?></td>
-                            <td><?=$membro?></td>
-                            <td><?=$local_visita?></td>
-                            <td><?=$data_visita?></td>
-                            <td><?=$hora_visita?></td>
-
+                            <td><?=$id_visita?></td>    
+                            <td><?=$row_assistente['nome_usuario']?></td>
+                            <td><?=$row_membro['nome_usuario']?></td>
+                            <td><?=$cep?></td>
+                            <td><?=$estado?></td>
+                            <td><?=$cidade?></td>
+                            <td><?=$data_visita->format("d/m/Y")?></td>
+                            <td><?=$hora_visita->format("H:i");?></td>
                             <td>
-                                <a name="edit" href="vScreenEdit.php?id=<?= $id_visita ?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>
-                                <a name="del" href="view.php?id=<?= $id_visita ?>"  class="view_btn"><img src="/pi353socialdigital/IMAGES/impressao.png" alt="view"></a>
-                                <a name="del" href="vDelete.php?id=<?= $id_visita ?>"  class="del_btn"><img src="/pi353socialdigital/IMAGES/lixo.png" alt="trash"></a>
+                                <a name="edit" href="vScreenEdit.php?id=<?=$row['id_visitas']?>" class="edit_btn"><img src="/pi353socialdigital/IMAGES/editar.png" alt="edit"></a>
+                                <a name="del" href="vImprimir.php?id=<?=$row['id_visitas']?>"  class="view_btn"><img src="/pi353socialdigital/IMAGES/impressao.png" alt="view"></a>
+                                <a name="del" href="vDelete.php?id=<?=$row['id_visitas']?>"  class="del_btn"><img src="/pi353socialdigital/IMAGES/lixo.png" alt="trash"></a>
                             </td>
                         </tr>
                     <?php } ?>
+
+                    
                     
                 </tbody>
             </table>

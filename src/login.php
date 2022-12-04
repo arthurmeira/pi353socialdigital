@@ -1,3 +1,12 @@
+<?php
+
+    include_once('admin/connect.php');
+
+    session_start();
+    error_reporting(0);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +16,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
           crossorigin="anonymous">    
-    <title>Document</title>
+    <title>Social Digital</title>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
         <a class="navbar-brand" href="#">Social Digital</a>
     </nav>
 
@@ -35,10 +44,26 @@
 
 <?php
 
-    include_once('admin/connect.php');
+   $email = $_POST['email_login'];
+   $senha = $_POST['senha_login'];
 
-    $sql_verifica = ("SELECT * FROM usuarios WHERE id_usuario = 22");
-    echo $sql_verifica;
+   $sql_verifica = mysqli_query($conn, "SELECT * FROM usuarios WHERE (email_usuario = '$email') AND (senha_user = '$senha')");
+   $row = mysqli_fetch_array($sql_verifica);
+
+   $id = $row['id_usuario'];
+
+    if (isset($_POST['entrar'])) {        
+        if ($row['email_usuario'] == $email AND $row['senha_user'] == $senha AND $row['fk_tipo'] == 2 OR $row['fk_tipo'] == 1) {
+            $_SESSION['logado'] = true;
+            //$_SESSION['usuario'] = $id;
+            header("Location: ../src/admin/usuarios/read.php");
+        } 
+        else if ($row['email_usuario'] == $email AND $row['senha_user'] == $senha AND $row['fk_tipo'] == 3){
+            $_SESSION['logado'] = true;
+            //$_SESSION['usuario'] = $id;
+            header("Location: ../src/user/home.php?id=$id");
+        }
+    }
 
 ?>
 

@@ -1,3 +1,9 @@
+<?php
+    //include_once('/xampp/htdocs/pi353socialdigital/src/user/sessao.php');
+    //$id = $_GET['id'];
+    include_once("../connect.php");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,52 +12,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Social Digital - Admin</title>
+    <title>Social Digital</title>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Social Digital</a>
+<?php
+        include_once('../header.php');
 
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Usuários
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/screen.php">Novo usuário</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Tabela de usuários</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/usuarios/read.php">Relatório de usuário</a>
-                    </div>
-
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Visitas
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vScreen.php">Nova visita</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Tabela de visitas</a>
-                        <a class="dropdown-item" href="/pi353socialdigital/src/admin/visitas/vRead.php">Relatório de visita</a>
-                    </div>
-
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Contato
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Mensagens</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <br><br>
-
-    <?php
         //GERADOR DE SENHA
 
         function generatePassword($qtyCaraceters = 8)
@@ -78,10 +44,18 @@
             //Retorna a senha
             return $password;
         }
+    
     ?>
 
-    <form method="POST" action="/pi353socialdigital/src/admin/usuarios/create.php" style="width: 60%; margin: auto;">
+
+    <form method="POST" action="screen.php" style="width: 60%; margin: auto;">
             
+        <div style="display:flex; align-items:center; justify-content:space-between">
+            <h3>Novo usuário</h3>
+            <a href="read.php" style="margin-bottom: 10px;" class="btn btn-outline-primary">Voltar</a>
+        </div>
+        <hr><br>
+
         <div class="form-row">
             <div class="form-group col-md-5">
                 <label for="inputEmail4">Nome</label>
@@ -102,8 +76,8 @@
                 <label for="tipo_usuario">Tipo de Usuário</label>
                 <select id="tipo_usuario" name="tipo_usuario" class="form-control">
                     <?php
-                        include_once("../connect.php");
                         $results = mysqli_query($conn, "SELECT * FROM tipo_usuario");
+
                         while ($row = mysqli_fetch_array($results)) {
                             echo '<option value="' . $row['id_tipo'] . '">' . $row['nome_tipo'] . '</option>';
                         }
@@ -125,138 +99,20 @@
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputPassword4">Cadastro</label>
-                    <input class="form-control" type="date" name="dtCad_user" id="userDtCad" value="<?=date('d/m/Y');?>" required>
-                </div>
-        </div>
-
-
-        
-        <form method="get" action=".">
-        
-        
-        <div class="form-row">
-        
-        <div class="form-group col-md-3">
-                <label>CEP</label>
-                <input placeholder="CEP" class="form-control" name="cep" type="text" id="cep" value="" size="10" maxlength="9" onchange="pesquisacep(this.value);" />
-            </div>
-
-            <div class="form-group col-md-1">
-                    <label>Estado</label>
-                    <select class="form-control" name="estado_user" type="text" placeholder="UF" required id="uf" name="" id="">
-                        <?php
-                        include_once("../connect.php");
-                        $results = mysqli_query($conn, "SELECT * FROM estados");
-
-                        while ($row = mysqli_fetch_array($results)) {
-                            echo '<option value="' . $row['id_estado'] . '">' . $row['uf_estado'] . '</option>';
-                        }
-                    ?>
-                    </select>
-                    
-                </div>
-                
-            
-                <div class="form-group col-md-8">
-                    <label>Cidade</label>
-                    <input class="form-control" name="cidade_user" id="cidade" placeholder="Cidade" required id="cidade" size="40" />
-                </div>
-
-                <div class="form-group col-md-6">
-                    <label>Bairro</label>
-                    <input class="form-control" name="bairro_user" type="text" placeholder="Bairro" required id="bairro" size="40" />
-                </div>
-
-                <div class="form-group col-md-6">
-                    <label>Rua</label>
-                    <input class="form-control" name="rua_user" type="text" placeholder="Rua" required id="rua" size="60" />
+                    <input class="form-control" type="date" name="dtCad_user" id="userDtCad" value='<?php echo date("Y-m-d"); ?>' required>
                 </div>
             </div>
             <button type="submit" name="sbmt" class="btn btn-primary col-md-12">Cadastrar</button>
         </form>
     </form >
 
-    <br><br>
-
-    <!-- Adicionando Javascript -->
-    <script>
-        function limpa_formulário_cep() {
-            //Limpa valores do formulário de cep.
-            document.getElementById('rua').value = ("");
-            document.getElementById('bairro').value = ("");
-            document.getElementById('cidade').value = ("");
-            document.getElementById('uf').value = ("");
-            document.getElementById('ibge').value = ("");
-        }
-
-        function meu_callback(conteudo) {
-            if (!("erro" in conteudo)) {
-                //Atualiza os campos com os valores.
-                document.getElementById('rua').value = (conteudo.logradouro);
-                document.getElementById('bairro').value = (conteudo.bairro);
-                document.getElementById('cidade').value = (conteudo.localidade);
-                document.getElementById('uf').value = (conteudo.uf);
-                document.getElementById('ibge').value = (conteudo.ibge);
-            } //end if.
-            else {
-                //CEP não Encontrado.
-                limpa_formulário_cep();
-                alert("CEP não encontrado.");
+    <?php
+            error_reporting(0);
+            if(isset($_POST['sbmt'])){
+                include_once('create.php');
+                echo "<script>alert('Usuário adicionado!')</script>";
             }
-        }
-
-        function pesquisacep(valor) {
-
-            //Nova variável "cep" somente com dígitos.
-            var cep = valor.replace(/\D/g, '');
-
-            //Verifica se campo cep possui valor informado.
-            if (cep != "") {
-
-                //Expressão regular para validar o CEP.
-                var validacep = /^[0-9]{8}$/;
-
-                //Valida o formato do CEP.
-                if (validacep.test(cep)) {
-
-                    //Preenche os campos com "..." enquanto consulta webservice.
-                    document.getElementById('rua').value = "...";
-                    document.getElementById('bairro').value = "...";
-                    document.getElementById('cidade').value = "...";
-                    document.getElementById('uf').value = "...";
-                    document.getElementById('ibge').value = "...";
-
-                    //Cria um elemento javascript.
-                    var script = document.createElement('script');
-
-                    //Sincroniza com o callback.
-                    script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
-
-                    //Insere script no documento e carrega o conteúdo.
-                    document.body.appendChild(script);
-
-                } //end if.
-                else {
-                    //cep é inválido.
-                    limpa_formulário_cep();
-                    alert("Formato de CEP inválido.");
-                }
-            } //end if.
-            else {
-                //cep sem valor, limpa formulário.
-                limpa_formulário_cep();
-            }
-        }
-    </script>
-
-
-
-    <!-- Inicio do formulario -->
-    <form method="get" action=".">
-        <input name="ibge" type="hidden" id="ibge" size="8" /></label><br />
-    </form>
-</body>
-
+    ?>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
